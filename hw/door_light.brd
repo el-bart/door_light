@@ -61,7 +61,7 @@
 <wire x1="100" y1="80" x2="0" y2="80" width="0" layer="20"/>
 <wire x1="0" y1="80" x2="0" y2="0" width="0" layer="20"/>
 <circle x="33.02" y="69.85" radius="1.27" width="0.4064" layer="16"/>
-<text x="48.26" y="68.58" size="1.778" layer="16" rot="MR0">v1.0</text>
+<text x="48.26" y="68.58" size="1.778" layer="16" rot="MR0">v1.0.0</text>
 </plain>
 <libraries>
 <library name="atmel">
