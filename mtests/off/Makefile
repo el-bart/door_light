@@ -1,29 +1,35 @@
-PROGRAM=off
-OUT=$(PROGRAM).out
-SRC=off.c
-MCU_TYPE=attiny13
+PROGRAM:=$(notdir $(CURDIR))
+OUT:=$(PROGRAM).out
+SRC:=$(wildcard *.cpp *.c)
+MCU_TYPE:=attiny13
 
+OBJ:=$(SRC:.c=.o)
+OBJ:=$(OBJ:.cpp=.o)
+HEX_FILE:=$(PROGRAM).hex
+BIN_FILE:=$(PROGRAM).bin
 
-OBJ=$(SRC:.c=.o)
-HEX_FILE=$(PROGRAM).hex
-BIN_FILE=$(PROGRAM).bin
+CC:=avr-gcc
+CXX:=avr-g++
+OBJ_CP:=avr-objcopy
 
-CC=avr-gcc
-OBJ_CP=avr-objcopy
+CFLAGS_COMMON:=-Wall -mmcu=$(MCU_TYPE)
+CFLAGS:=$(CFLAGS_COMMON) -std=c99
+CXXFLAGS:=$(CFLAGS_COMMON) -std=c++11
+LDFLAGS:=
 
-CFLAGS_COMMON=-Wall -mmcu=$(MCU_TYPE) -std=c99
-CFLAGS+=$(CFLAGS_COMMON)
-
+.SECONDARY:
 
 .PHONY: all
 all: release
 
 .PHONY: debug
 debug: CFLAGS+=-g3
+debug: CXXFLAGS+=-g3
 debug: hex bin
 
 .PHONY: release
-release: CFLAGS+=-O3 -DNDEBUG
+release: CFLAGS+=-Os -DNDEBUG
+release: CXXFLAGS+=-Os -DNDEBUG
 release: hex bin
 
 .PHONY: hex
@@ -39,7 +45,7 @@ $(BIN_FILE): $(OUT)
 	$(OBJ_CP) -O binary $< $@
 
 $(OUT): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $@
+	$(CXX) $(LDFLAGS) $(OBJ) -o $@
 
 
 .PHONY: flash_mcu
@@ -50,4 +56,3 @@ flash_mcu:
 .PHONY: clean
 clean:
 	rm -fv $(OUT) $(BIN_FILE) $(HEX_FILE) $(OBJ)
-
