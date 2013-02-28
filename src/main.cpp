@@ -1,45 +1,7 @@
 #include "config.hpp"
 #include <avr/io.h>
-#include <avr/interrupt.h>
 #include <util/delay.h>
 #include <inttypes.h>
-
-volatile uint8_t XXX=0;             
-
-ISR(TIM0_OVF_vect)
-{
-XXX++;              
-  // nothing to be done here - just wake up the CPU
-}
-
-ISR(TIM0_COMPA_vect)
-{
-XXX++;              
-  // nothing to be done here - just wake up the CPU
-}
-
-ISR(TIM0_COMPB_vect)
-{
-XXX++;              
-  // nothing to be done here - just wake up the CPU
-}
-
-
-inline void setupInterrupts(void)
-{
-  // setup operation mode
-  TCCR0A |= _BV(WGM01); // 010 - CTC mode
-  // setup frequency fout=(fclk)/(2*preskaler*ocr0a)
-  TCCR0A |= _BV(CS01);  // set preskaler to 010, that is N=8
-  OCR0A   = 75;         // proportional value
-  // enable interrupts
-  TIFR0  |= _BV(OCF0A); // interrupt when counter reaches TOP
-  TIMSK0 |= _BV(OCIE0A);// enable this interrupt
-  //TIMSK0 |= _BV(OCIE0B);
-  //TIMSK0 |= _BV(TOIE0);
-  sei();                // globally enable interrupts
-  // TODO
-}
 
 
 inline void setupAdc(void)
@@ -110,13 +72,14 @@ int main(void)
   // init program
   setupPorts();
   setupAdc();
-  setupInterrupts();
 
+  // initial state s
   ctrlLed(true);
   light(false);
-  uint8_t  index   = 0;
   uint8_t  read[2] = { irLight(), irLight() };
-  uint16_t onLeft  = 0;
+  uint8_t  index   = 0;
+  uint16_t onLeft  = 2*20;              // light up at start for 2[s]
+
   // main loop
   for(;;)
   {
@@ -130,7 +93,7 @@ int main(void)
     if( distance(read[0], read[1]) > 1 )
     {
       light(true);
-      onLeft =  1*20;                   // 46[s]
+      onLeft = 42*20;                   // 42[s]
     }
 
     index       = index==0 ? 1 : 0;     // change index to oposite
