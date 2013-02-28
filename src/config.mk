@@ -17,8 +17,8 @@ export CXX:=avr-g++
 export OBJCOPY:=avr-objcopy
 export LD :=$(CC)
 # tools settings
-export LFUSE:=255
-export HFUSE:=255
+export LFUSE:=0x6A
+export HFUSE:=0xFF
 # type of MCU for the avrdude programmer
 export MCU_PROG_TYPE:=attiny13
 # mype of MCU for the compiler
