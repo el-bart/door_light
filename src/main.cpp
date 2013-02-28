@@ -4,9 +4,40 @@
 #include <util/delay.h>
 #include <inttypes.h>
 
+volatile uint8_t XXX=0;             
+
+ISR(TIM0_OVF_vect)
+{
+XXX++;              
+  // nothing to be done here - just wake up the CPU
+}
+
+ISR(TIM0_COMPA_vect)
+{
+XXX++;              
+  // nothing to be done here - just wake up the CPU
+}
+
+ISR(TIM0_COMPB_vect)
+{
+XXX++;              
+  // nothing to be done here - just wake up the CPU
+}
+
 
 inline void setupInterrupts(void)
 {
+  // setup operation mode
+  TCCR0A |= _BV(WGM01); // 010 - CTC mode
+  // setup frequency fout=(fclk)/(2*preskaler*ocr0a)
+  TCCR0A |= _BV(CS01);  // set preskaler to 010, that is N=8
+  OCR0A   = 75;         // proportional value
+  // enable interrupts
+  TIFR0  |= _BV(OCF0A); // interrupt when counter reaches TOP
+  TIMSK0 |= _BV(OCIE0A);// enable this interrupt
+  //TIMSK0 |= _BV(OCIE0B);
+  //TIMSK0 |= _BV(TOIE0);
+  sei();                // globally enable interrupts
   // TODO
 }
 
@@ -81,32 +112,30 @@ int main(void)
   setupAdc();
   setupInterrupts();
 
-#if 0
-  for(;;);
-#else
-
   ctrlLed(true);
-  bool mode = true;
-  uint8_t v = irLight();
+  light(false);
+  uint8_t  index   = 0;
+  uint8_t  read[2] = { irLight(), irLight() };
+  uint16_t onLeft  = 0;
   // main loop
   for(;;)
   {
-    /*
-    light(mode);
-    ctrlLed(!mode);
-    mode=!mode;
-    */
-    _delay_ms(250);
-    uint8_t tmp = irLight();
-    if( distance(tmp, v) > 2 )
+    _delay_ms(50);
+
+    if(onLeft>0)
+      --onLeft;
+    else
+      light(false);
+
+    if( distance(read[0], read[1]) > 1 )
     {
-      light(mode);
-      mode=!mode;
-      v=tmp;
+      light(true);
+      onLeft =  1*20;                   // 46[s]
     }
-    // TODO
+
+    index       = index==0 ? 1 : 0;     // change index to oposite
+    read[index] = irLight();            // perform reading
   }
-#endif
 
   // program never reaches here
   return 0;
