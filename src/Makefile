@@ -123,7 +123,7 @@ flash_mcu:
 	# flash program
 	avrdude -P avrdoper -c stk500v2 -p "$(MCU_PROG_TYPE)" -U "flash:w:$(GENDIR)/$(PROFILE)/$(BIN_FILE)"
 	# setup fuse bits
-	avrdude -P avrdoper -c stk500v2 -p "$(MCU_PROG_TYPE)" -U "lfuse:w:$(LFUSE):m" -U "hfuse:w:$(HFUSE):m"
+	[ -z "$(LFUSE)$(HFUSE)" ] || avrdude -P avrdoper -c stk500v2 -p "$(MCU_PROG_TYPE)" -U "lfuse:w:$(LFUSE):m" -U "hfuse:w:$(HFUSE):m"
 endif
 
 .PHONY: clean
