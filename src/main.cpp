@@ -102,6 +102,7 @@ int main(void)
     {
       light(mode);
       mode=!mode;
+      v=tmp;
     }
     // TODO
   }
