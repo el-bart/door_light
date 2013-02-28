@@ -1,0 +1,40 @@
+# name of the application
+export PROGRAM_NAME:=door_light
+
+# default toolchain - can be changed with 'make TC=xxx'
+export TC:=avr
+
+# toolchain
+ifeq ($(TC),gcc)
+export CC :=gcc
+export CXX:=g++
+export LD :=$(CXX)
+else
+ifeq ($(TC),avr)
+# tools
+export CC :=avr-gcc
+export CXX:=avr-g++
+export OBJCOPY:=avr-objcopy
+export LD :=$(CC)
+# tools settings
+export LFUSE:=255
+export HFUSE:=255
+# type of MCU for the avrdude programmer
+export MCU_PROG_TYPE:=attiny13
+# mype of MCU for the compiler
+export MCU_TYPE:=attiny13
+export CFLAGS  +=-mmcu=$(MCU_TYPE)
+export CXXFLAGS+=-mmcu=$(MCU_TYPE)
+export LDFLAGS +=-mmcu=$(MCU_TYPE)
+else
+$(error UNKNWON TOOLCHAIN '$(TC)'; USE 'gcc' (i.e. local) or 'avr')
+endif # TC=avr
+endif # TC=gcc
+
+# extra flags, if needed
+export CFLAGS  +=-std=c11
+export CXXFLAGS+=-std=c++11
+export LDFLAGS +=
+
+# default target
+export DEFAULT_TARGET:=release
