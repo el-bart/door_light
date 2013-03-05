@@ -1,0 +1,5 @@
+* move threshold to config.hpp.
+* fix ADC result returning - it should be 10 bit: either read ADCHL or do result<<2.
+* decrease threshold, so that detection is done on a longer distance.
+* add IR-on vs. IR-off for background light substraction.
+* fix hw to use PWM for liting up and fading out LEDs.
