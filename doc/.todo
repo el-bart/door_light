@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<todo version="0.1.20">
+    <note priority="medium" time="1380225018">
+        add IR-on vs. IR-off for background light substraction.
+    </note>
+    <note priority="medium" time="1380225018">
+        decrease threshold, so that detection is done on a longer distance.
+    </note>
+    <note priority="medium" time="1380225018">
+        fix ADC result returning - it should be 10 bit: either read ADCHL or do result&lt;&lt;2.
+    </note>
+    <note priority="medium" time="1380225018">
+        fix hw to use PWM for liting up and fading out LEDs.
+    </note>
+    <note priority="medium" time="1380225018">
+        make external power via mini-USB, so that PC-communication can be made + uniwersal power charges can be used.
+    </note>
+    <note priority="medium" time="1380225018">
+        move threshold to config.hpp.
+    </note>
+</todo>
