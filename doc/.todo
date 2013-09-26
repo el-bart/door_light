@@ -18,4 +18,13 @@
     <note priority="medium" time="1380225018">
         move threshold to config.hpp.
     </note>
+    <note priority="medium" time="1380225102">
+        add internal probe, to be used by user from inside, to enable light on the outside
+    </note>
+    <note priority="medium" time="1380225127">
+        add external probe on the cable, so that only probe can be moved on the other side of the doors
+    </note>
+    <note priority="low" time="1380225072">
+        add low-power led indicator
+    </note>
 </todo>
