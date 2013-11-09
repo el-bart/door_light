@@ -1,3 +1,7 @@
-PB2 - photo-transistor input (analog) == ADC1
-PB3 - IR and RED LEDs on(1)/off(0)
-PB4 - light on(1)/off(0)
+PB0 - IR and RED LEDs on(1)/off(0)
+PB1 - light on(1)/off(0)
+PB3 - photo-transistor input (analog) == ADC3
+PB4 - voltage monitor (analog) == ADC2
+
+PB2 - unused
+PB5 - reset
