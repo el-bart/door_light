@@ -1,7 +1,13 @@
 <?xml version="1.0"?>
 <todo version="0.1.20">
-    <note priority="high" time="1383929676">
+    <note priority="high" time="1383929676" done="1384035443">
         consider putting whole PCB on the outside and just power it up from the inside (+fuse)? power reest would indicate start light from the inside.
+    </note>
+    <note priority="medium" time="1380225102" done="1384035493">
+        add internal probe, to be used by user from inside, to enable light on the outside
+    </note>
+    <note priority="medium" time="1380225127" done="1384035483">
+        add external probe on the cable, so that only probe can be moved on the other side of the doors
     </note>
     <note priority="medium" time="1380225018">
         add IR-on vs. IR-off for background light substraction.
@@ -21,13 +27,7 @@
     <note priority="medium" time="1380225018">
         move threshold to config.hpp.
     </note>
-    <note priority="medium" time="1380225102">
-        add internal probe, to be used by user from inside, to enable light on the outside
-    </note>
-    <note priority="medium" time="1380225127">
-        add external probe on the cable, so that only probe can be moved on the other side of the doors
-    </note>
-    <note priority="low" time="1380225072">
+    <note priority="low" time="1380225072" done="1384035498">
         add low-power led indicator
     </note>
 </todo>
