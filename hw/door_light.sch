@@ -16201,10 +16201,10 @@ Source: http://www.infineon.com/upload/Document/BSP170P_Rev2.4.pdf</description>
 <part name="SUPPLY21" library="supply2" deviceset="0V" device=""/>
 <part name="SUPPLY18" library="supply2" deviceset="+4.1V" device="" value="Vbatt"/>
 <part name="SUPPLY1" library="supply2" deviceset="+4.1V" device="" value="Vbatt"/>
-<part name="R9" library="rcl" deviceset="R-EU_" device="R0603" value="10kR"/>
+<part name="R9" library="rcl" deviceset="R-EU_" device="R0603" value="2.9kR"/>
 <part name="R10" library="rcl" deviceset="R-EU_" device="R0603" value="10kR"/>
-<part name="R8" library="rcl" deviceset="R-EU_" device="R0603" value="2.4kR"/>
-<part name="R11" library="rcl" deviceset="R-EU_" device="R0603" value="2.4kR"/>
+<part name="R8" library="rcl" deviceset="R-EU_" device="R0603" value="10kR"/>
+<part name="R11" library="rcl" deviceset="R-EU_" device="R0603" value="2.9kR"/>
 <part name="SUPPLY22" library="supply2" deviceset="+4.1V" device="" value="Vbatt"/>
 <part name="SUPPLY23" library="supply2" deviceset="+4.1V" device="" value="Vbatt"/>
 <part name="SUPPLY24" library="supply2" deviceset="0V" device=""/>
