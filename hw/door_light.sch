@@ -15639,80 +15639,6 @@ Source: www.kingbright.com</description>
 </deviceset>
 </devicesets>
 </library>
-<library name="con-amp">
-<description>&lt;b&gt;AMP Connectors&lt;/b&gt;&lt;p&gt;
-RJ45 Jack connectors&lt;br&gt;
- Based on the previous libraris:
- &lt;ul&gt;
- &lt;li&gt;amp.lbr
- &lt;li&gt;amp-j.lbr
- &lt;li&gt;amp-mta.lbr
- &lt;li&gt;amp-nlok.lbr
- &lt;li&gt;amp-sim.lbr
- &lt;li&gt;amp-micro-match.lbr
- &lt;/ul&gt;
- Sources :
- &lt;ul&gt;
- &lt;li&gt;Catalog 82066 Revised 11-95 
- &lt;li&gt;Product Guide 296785 Rev. 8-99
- &lt;li&gt;Product Guide CD-ROM 1999
- &lt;li&gt;www.amp.com
- &lt;/ul&gt;
- &lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
-<packages>
-<package name="10X02MTA">
-<description>&lt;b&gt;AMP MTA connector&lt;/b&gt;&lt;p&gt;
-Source: http://ecommas.tycoelectronics.com .. ENG_CD_640456_W.pdf</description>
-<wire x1="-2.54" y1="-1.27" x2="-2.54" y2="1.27" width="0.1524" layer="21"/>
-<wire x1="2.54" y1="1.27" x2="-2.54" y2="1.27" width="0.1524" layer="21"/>
-<wire x1="-2.54" y1="-1.27" x2="2.54" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="-2.54" y1="1.27" x2="-2.54" y2="1.905" width="0.1524" layer="21"/>
-<wire x1="2.54" y1="1.905" x2="-2.54" y2="1.905" width="0.1524" layer="21"/>
-<wire x1="2.54" y1="1.27" x2="2.54" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="2.54" y1="1.905" x2="2.54" y2="1.27" width="0.1524" layer="21"/>
-<pad name="2" x="-1.27" y="0" drill="1.016" shape="long" rot="R90"/>
-<pad name="1" x="1.27" y="0" drill="1.016" shape="long" rot="R90"/>
-<text x="-2.6162" y="-3.2512" size="1.27" layer="25">&gt;NAME</text>
-<text x="-2.5461" y="2.1509" size="1.27" layer="27">&gt;VALUE</text>
-<rectangle x1="1.016" y1="-0.254" x2="1.524" y2="0.254" layer="21"/>
-<rectangle x1="-1.524" y1="-0.254" x2="-1.016" y2="0.254" layer="21"/>
-</package>
-</packages>
-<symbols>
-<symbol name="MTA-1_2">
-<wire x1="-1.27" y1="1.27" x2="-1.27" y2="-1.905" width="0.254" layer="94"/>
-<wire x1="3.81" y1="-1.905" x2="-1.27" y2="-1.905" width="0.254" layer="94"/>
-<wire x1="3.81" y1="-1.905" x2="3.81" y2="1.27" width="0.254" layer="94"/>
-<wire x1="-1.27" y1="1.27" x2="3.81" y2="1.27" width="0.254" layer="94"/>
-<circle x="0" y="0" radius="0.635" width="0.254" layer="94"/>
-<circle x="2.54" y="0" radius="0.635" width="0.254" layer="94"/>
-<text x="5.08" y="0" size="1.778" layer="95">&gt;NAME</text>
-<text x="5.08" y="-3.81" size="1.778" layer="96">&gt;VALUE</text>
-<text x="-2.54" y="-1.27" size="1.27" layer="95">1</text>
-<pin name="1" x="0" y="-2.54" visible="off" length="short" direction="pas" rot="R90"/>
-<pin name="2" x="2.54" y="-2.54" visible="off" length="short" direction="pas" rot="R90"/>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="MTA02-100" prefix="J" uservalue="yes">
-<description>&lt;b&gt;AMP connector&lt;/b&gt;</description>
-<gates>
-<gate name="G$1" symbol="MTA-1_2" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="10X02MTA">
-<connects>
-<connect gate="G$1" pin="1" pad="1"/>
-<connect gate="G$1" pin="2" pad="2"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
-</devicesets>
-</library>
 <library name="Texas Instruments_By_element14_Batch_1">
 <description>Developed by element14 :&lt;br&gt;
 element14 CAD Library consolidation.ulp
@@ -16156,6 +16082,109 @@ Source: http://www.infineon.com/upload/Document/BSP170P_Rev2.4.pdf</description>
 </deviceset>
 </devicesets>
 </library>
+<library name="jumper">
+<description>&lt;b&gt;Jumpers&lt;/b&gt;&lt;p&gt;
+&lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
+<packages>
+<package name="SJ">
+<description>&lt;b&gt;Solder jumper&lt;/b&gt;</description>
+<wire x1="1.397" y1="-1.016" x2="-1.397" y2="-1.016" width="0.1524" layer="21"/>
+<wire x1="1.397" y1="1.016" x2="1.651" y2="0.762" width="0.1524" layer="21" curve="-90"/>
+<wire x1="-1.651" y1="0.762" x2="-1.397" y2="1.016" width="0.1524" layer="21" curve="-90"/>
+<wire x1="-1.651" y1="-0.762" x2="-1.397" y2="-1.016" width="0.1524" layer="21" curve="90"/>
+<wire x1="1.397" y1="-1.016" x2="1.651" y2="-0.762" width="0.1524" layer="21" curve="90"/>
+<wire x1="1.651" y1="-0.762" x2="1.651" y2="0.762" width="0.1524" layer="21"/>
+<wire x1="-1.651" y1="-0.762" x2="-1.651" y2="0.762" width="0.1524" layer="21"/>
+<wire x1="-1.397" y1="1.016" x2="1.397" y2="1.016" width="0.1524" layer="21"/>
+<wire x1="1.016" y1="0" x2="1.524" y2="0" width="0.1524" layer="51"/>
+<wire x1="-1.016" y1="0" x2="-1.524" y2="0" width="0.1524" layer="51"/>
+<wire x1="-0.254" y1="-0.127" x2="-0.254" y2="0.127" width="1.27" layer="51" curve="-180" cap="flat"/>
+<wire x1="0.254" y1="0.127" x2="0.254" y2="-0.127" width="1.27" layer="51" curve="-180" cap="flat"/>
+<smd name="1" x="-0.762" y="0" dx="1.1684" dy="1.6002" layer="1"/>
+<smd name="2" x="0.762" y="0" dx="1.1684" dy="1.6002" layer="1"/>
+<text x="-1.651" y="1.143" size="1.27" layer="25" ratio="10">&gt;NAME</text>
+<text x="0.4001" y="0" size="0.02" layer="27">&gt;VALUE</text>
+<rectangle x1="-0.0762" y1="-0.9144" x2="0.0762" y2="0.9144" layer="29"/>
+</package>
+<package name="SJW">
+<description>&lt;b&gt;Solder jumper&lt;/b&gt;</description>
+<wire x1="1.905" y1="-1.524" x2="-1.905" y2="-1.524" width="0.1524" layer="21"/>
+<wire x1="1.905" y1="1.524" x2="2.159" y2="1.27" width="0.1524" layer="21" curve="-90"/>
+<wire x1="-2.159" y1="1.27" x2="-1.905" y2="1.524" width="0.1524" layer="21" curve="-90"/>
+<wire x1="-2.159" y1="-1.27" x2="-1.905" y2="-1.524" width="0.1524" layer="21" curve="90"/>
+<wire x1="1.905" y1="-1.524" x2="2.159" y2="-1.27" width="0.1524" layer="21" curve="90"/>
+<wire x1="2.159" y1="-1.27" x2="2.159" y2="1.27" width="0.1524" layer="21"/>
+<wire x1="-2.159" y1="-1.27" x2="-2.159" y2="1.27" width="0.1524" layer="21"/>
+<wire x1="-1.905" y1="1.524" x2="1.905" y2="1.524" width="0.1524" layer="21"/>
+<wire x1="0.762" y1="0.762" x2="0.762" y2="-0.762" width="0.1524" layer="51"/>
+<wire x1="-0.762" y1="0.762" x2="-0.762" y2="-0.762" width="0.1524" layer="51"/>
+<wire x1="1.524" y1="0" x2="2.032" y2="0" width="0.1524" layer="51"/>
+<wire x1="-1.524" y1="0" x2="-2.032" y2="0" width="0.1524" layer="51"/>
+<wire x1="0.762" y1="0.762" x2="0.762" y2="-0.762" width="0.1524" layer="51" curve="-180"/>
+<wire x1="-0.762" y1="0.762" x2="-0.762" y2="-0.762" width="0.1524" layer="51" curve="180"/>
+<smd name="1" x="-1.27" y="0" dx="1.27" dy="2.54" layer="1"/>
+<smd name="2" x="1.27" y="0" dx="1.27" dy="2.54" layer="1"/>
+<text x="-2.159" y="1.778" size="1.27" layer="25" ratio="10">&gt;NAME</text>
+<text x="1" y="0" size="0.02" layer="27">&gt;VALUE</text>
+<rectangle x1="0.762" y1="-0.762" x2="1.016" y2="0.762" layer="51"/>
+<rectangle x1="1.016" y1="-0.635" x2="1.27" y2="0.635" layer="51"/>
+<rectangle x1="1.27" y1="-0.508" x2="1.397" y2="0.508" layer="51"/>
+<rectangle x1="1.397" y1="-0.254" x2="1.524" y2="0.254" layer="51"/>
+<rectangle x1="-1.016" y1="-0.762" x2="-0.762" y2="0.762" layer="51"/>
+<rectangle x1="-1.27" y1="-0.635" x2="-1.016" y2="0.635" layer="51"/>
+<rectangle x1="-1.397" y1="-0.508" x2="-1.27" y2="0.508" layer="51"/>
+<rectangle x1="-1.524" y1="-0.254" x2="-1.397" y2="0.254" layer="51"/>
+<rectangle x1="0.9652" y1="-0.7112" x2="1.0922" y2="-0.5842" layer="51"/>
+<rectangle x1="1.3462" y1="-0.3556" x2="1.4732" y2="-0.2286" layer="51"/>
+<rectangle x1="1.3462" y1="0.2032" x2="1.4732" y2="0.3302" layer="51"/>
+<rectangle x1="0.9652" y1="0.5842" x2="1.0922" y2="0.7112" layer="51"/>
+<rectangle x1="-1.0922" y1="-0.7112" x2="-0.9652" y2="-0.5842" layer="51"/>
+<rectangle x1="-1.4478" y1="-0.3302" x2="-1.3208" y2="-0.2032" layer="51"/>
+<rectangle x1="-1.4732" y1="0.2032" x2="-1.3462" y2="0.3302" layer="51"/>
+<rectangle x1="-1.1176" y1="0.5842" x2="-0.9906" y2="0.7112" layer="51"/>
+</package>
+</packages>
+<symbols>
+<symbol name="SJ">
+<wire x1="0.381" y1="0.635" x2="0.381" y2="-0.635" width="1.27" layer="94" curve="-180" cap="flat"/>
+<wire x1="-0.381" y1="-0.635" x2="-0.381" y2="0.635" width="1.27" layer="94" curve="-180" cap="flat"/>
+<wire x1="2.54" y1="0" x2="1.651" y2="0" width="0.1524" layer="94"/>
+<wire x1="-2.54" y1="0" x2="-1.651" y2="0" width="0.1524" layer="94"/>
+<text x="-2.54" y="2.54" size="1.778" layer="95">&gt;NAME</text>
+<text x="-2.54" y="-3.81" size="1.778" layer="96">&gt;VALUE</text>
+<pin name="2" x="5.08" y="0" visible="pad" length="short" direction="pas" swaplevel="1" rot="R180"/>
+<pin name="1" x="-5.08" y="0" visible="pad" length="short" direction="pas" swaplevel="1"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="SJ" prefix="SJ" uservalue="yes">
+<description>SMD solder &lt;b&gt;JUMPER&lt;/b&gt;</description>
+<gates>
+<gate name="1" symbol="SJ" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="SJ">
+<connects>
+<connect gate="1" pin="1" pad="1"/>
+<connect gate="1" pin="2" pad="2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="W" package="SJW">
+<connects>
+<connect gate="1" pin="1" pad="1"/>
+<connect gate="1" pin="2" pad="2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -16172,8 +16201,6 @@ Source: http://www.infineon.com/upload/Document/BSP170P_Rev2.4.pdf</description>
 <part name="C5" library="rcl" deviceset="C-EU" device="C1206" value="100nF"/>
 <part name="SUPPLY8" library="supply2" deviceset="0V" device=""/>
 <part name="SUPPLY10" library="supply2" deviceset="0V" device=""/>
-<part name="J1" library="con-amp" deviceset="MTA02-100" device="" value="PWR"/>
-<part name="J2" library="con-amp" deviceset="MTA02-100" device="" value="LIGHT"/>
 <part name="SUPPLY11" library="supply2" deviceset="+12V" device=""/>
 <part name="SUPPLY12" library="supply2" deviceset="0V" device=""/>
 <part name="SUPPLY14" library="supply2" deviceset="0V" device=""/>
@@ -16219,6 +16246,8 @@ Source: http://www.infineon.com/upload/Document/BSP170P_Rev2.4.pdf</description>
 <part name="SUPPLY28" library="supply2" deviceset="0V" device=""/>
 <part name="Q1" library="transistor-fet" deviceset="BSP170P" device="" value="BSP250"/>
 <part name="T1" library="zetex" deviceset="NMOSSOT23" device=""/>
+<part name="SJ1" library="jumper" deviceset="SJ" device="W" value="PWR"/>
+<part name="SJ2" library="jumper" deviceset="SJ" device="W" value="LIGHT"/>
 </parts>
 <sheets>
 <sheet>
@@ -16231,16 +16260,14 @@ Source: http://www.infineon.com/upload/Document/BSP170P_Rev2.4.pdf</description>
 <instance part="C5" gate="G$1" x="60.96" y="78.74"/>
 <instance part="SUPPLY8" gate="0V" x="60.96" y="68.58"/>
 <instance part="SUPPLY10" gate="0V" x="30.48" y="5.08"/>
-<instance part="J1" gate="G$1" x="-7.62" y="76.2" rot="R90"/>
-<instance part="J2" gate="G$1" x="60.96" y="20.32" rot="R90"/>
-<instance part="SUPPLY11" gate="+12V" x="68.58" y="25.4"/>
-<instance part="SUPPLY12" gate="0V" x="68.58" y="17.78"/>
-<instance part="SUPPLY14" gate="0V" x="-2.54" y="68.58"/>
+<instance part="SUPPLY11" gate="+12V" x="58.42" y="30.48"/>
+<instance part="SUPPLY12" gate="0V" x="58.42" y="10.16"/>
+<instance part="SUPPLY14" gate="0V" x="5.08" y="71.12"/>
 <instance part="C2" gate="G$1" x="43.18" y="81.28"/>
 <instance part="SUPPLY19" gate="0V" x="43.18" y="71.12"/>
 <instance part="U1" gate="A" x="17.78" y="134.62"/>
-<instance part="SUPPLY26" gate="P" x="7.62" y="83.82"/>
-<instance part="F1" gate="G$1" x="2.54" y="78.74"/>
+<instance part="SUPPLY26" gate="P" x="5.08" y="86.36"/>
+<instance part="F1" gate="G$1" x="-2.54" y="83.82"/>
 <instance part="R7" gate="G$1" x="43.18" y="88.9" rot="R90"/>
 <instance part="D1" gate="G$1" x="60.96" y="129.54" rot="R270"/>
 <instance part="C3" gate="G$1" x="45.72" y="127"/>
@@ -16278,6 +16305,8 @@ Source: http://www.infineon.com/upload/Document/BSP170P_Rev2.4.pdf</description>
 <instance part="SUPPLY28" gate="0V" x="129.54" y="7.62"/>
 <instance part="Q1" gate="G$1" x="-38.1" y="144.78"/>
 <instance part="T1" gate="A" x="30.48" y="15.24" rot="MR0"/>
+<instance part="SJ1" gate="1" x="-10.16" y="78.74" rot="R90"/>
+<instance part="SJ2" gate="1" x="58.42" y="20.32" rot="R90"/>
 </instances>
 <busses>
 </busses>
@@ -16297,12 +16326,6 @@ Source: http://www.infineon.com/upload/Document/BSP170P_Rev2.4.pdf</description>
 <pinref part="SUPPLY10" gate="0V" pin="0V"/>
 <wire x1="30.48" y1="7.62" x2="30.48" y2="10.16" width="0.1524" layer="91"/>
 <pinref part="T1" gate="A" pin="S"/>
-</segment>
-<segment>
-<pinref part="J1" gate="G$1" pin="1"/>
-<pinref part="SUPPLY14" gate="0V" pin="0V"/>
-<wire x1="-2.54" y1="71.12" x2="-2.54" y2="76.2" width="0.1524" layer="91"/>
-<wire x1="-2.54" y1="76.2" x2="-5.08" y2="76.2" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="C2" gate="G$1" pin="2"/>
@@ -16355,17 +16378,17 @@ Source: http://www.infineon.com/upload/Document/BSP170P_Rev2.4.pdf</description>
 <wire x1="129.54" y1="12.7" x2="129.54" y2="10.16" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="J2" gate="G$1" pin="1"/>
+<pinref part="SJ2" gate="1" pin="1"/>
 <pinref part="SUPPLY12" gate="0V" pin="0V"/>
-<wire x1="68.58" y1="20.32" x2="63.5" y2="20.32" width="0.1524" layer="91"/>
+<wire x1="58.42" y1="12.7" x2="58.42" y2="15.24" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="SJ1" gate="1" pin="1"/>
+<pinref part="SUPPLY14" gate="0V" pin="0V"/>
+<wire x1="5.08" y1="73.66" x2="-10.16" y2="73.66" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="+12V" class="0">
-<segment>
-<pinref part="J2" gate="G$1" pin="2"/>
-<pinref part="SUPPLY11" gate="+12V" pin="+12V"/>
-<wire x1="68.58" y1="22.86" x2="63.5" y2="22.86" width="0.1524" layer="91"/>
-</segment>
 <segment>
 <pinref part="D1" gate="G$1" pin="C"/>
 <pinref part="C4" gate="G$1" pin="+"/>
@@ -16376,6 +16399,11 @@ Source: http://www.infineon.com/upload/Document/BSP170P_Rev2.4.pdf</description>
 <wire x1="60.96" y1="114.3" x2="12.7" y2="114.3" width="0.1524" layer="91"/>
 <junction x="60.96" y="114.3"/>
 <pinref part="R4" gate="G$1" pin="2"/>
+</segment>
+<segment>
+<pinref part="SJ2" gate="1" pin="2"/>
+<pinref part="SUPPLY11" gate="+12V" pin="+12V"/>
+<wire x1="58.42" y1="27.94" x2="58.42" y2="25.4" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$2" class="0">
@@ -16431,7 +16459,7 @@ Source: http://www.infineon.com/upload/Document/BSP170P_Rev2.4.pdf</description>
 </net>
 <net name="+4.1V" class="0">
 <segment>
-<wire x1="7.62" y1="81.28" x2="7.62" y2="78.74" width="0.1524" layer="91"/>
+<wire x1="5.08" y1="83.82" x2="2.54" y2="83.82" width="0.1524" layer="91"/>
 <pinref part="SUPPLY26" gate="P" pin="+4.1V"/>
 <pinref part="F1" gate="G$1" pin="2"/>
 </segment>
@@ -16478,9 +16506,9 @@ Source: http://www.infineon.com/upload/Document/BSP170P_Rev2.4.pdf</description>
 </net>
 <net name="N$8" class="0">
 <segment>
-<pinref part="J1" gate="G$1" pin="2"/>
 <pinref part="F1" gate="G$1" pin="1"/>
-<wire x1="-2.54" y1="78.74" x2="-5.08" y2="78.74" width="0.1524" layer="91"/>
+<wire x1="-7.62" y1="83.82" x2="-10.16" y2="83.82" width="0.1524" layer="91"/>
+<pinref part="SJ1" gate="1" pin="2"/>
 </segment>
 </net>
 <net name="N$10" class="0">
