@@ -9,6 +9,9 @@
     <note priority="medium" time="1380225127" done="1384035483">
         add external probe on the cable, so that only probe can be moved on the other side of the doors
     </note>
+    <note priority="low" time="1380225072" done="1384035498">
+        add low-power led indicator
+    </note>
     <note priority="medium" time="1380225018">
         add IR-on vs. IR-off for background light substraction.
     </note>
@@ -27,7 +30,7 @@
     <note priority="medium" time="1380225018">
         move threshold to config.hpp.
     </note>
-    <note priority="low" time="1380225072" done="1384035498">
-        add low-power led indicator
+    <note priority="medium" time="1384073868">
+        consider creating alternative version, power with 12V
     </note>
 </todo>
