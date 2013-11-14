@@ -16609,11 +16609,15 @@ Source: http://www.infineon.com/upload/Document/BSP170P_Rev2.4.pdf</description>
 <pinref part="R1" gate="G$1" pin="1"/>
 <pinref part="C1" gate="G$1" pin="+"/>
 <wire x1="-35.56" y1="127" x2="-35.56" y2="132.08" width="0.1524" layer="91"/>
-<wire x1="-2.54" y1="139.7" x2="-35.56" y2="139.7" width="0.1524" layer="91"/>
-<wire x1="-35.56" y1="139.7" x2="-35.56" y2="132.08" width="0.1524" layer="91"/>
+<wire x1="-35.56" y1="139.7" x2="-35.56" y2="137.16" width="0.1524" layer="91"/>
 <junction x="-35.56" y="132.08"/>
 <pinref part="Q1" gate="G$1" pin="D"/>
-<junction x="-35.56" y="139.7"/>
+<pinref part="U1" gate="A" pin="VCC"/>
+<wire x1="-35.56" y1="137.16" x2="-35.56" y2="132.08" width="0.1524" layer="91"/>
+<wire x1="-5.08" y1="139.7" x2="-27.94" y2="139.7" width="0.1524" layer="91"/>
+<wire x1="-27.94" y1="139.7" x2="-27.94" y2="137.16" width="0.1524" layer="91"/>
+<wire x1="-27.94" y1="137.16" x2="-35.56" y2="137.16" width="0.1524" layer="91"/>
+<junction x="-35.56" y="137.16"/>
 </segment>
 </net>
 </nets>

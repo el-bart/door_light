@@ -4,16 +4,12 @@
 
 int main(void)
 {
-  DDRB|=0xFF;               // while PB as output
-
-  PORTB^=0xFF;              // blink interchangably
-
+  DDRB |=0xFF;              // while PB as output
+  PORTB =0xFF;              // blink interchangably
   for(;;)
   {
-  PORTB^=0xFF;              // negate
-    // sleep 0.5[s]
-    for(uint8_t i=0; i<5; ++i)
-      _delay_ms(100);
+     PORTB^=0xFF;           // negate
+     _delay_ms(1000);       // wait 1[s]
   }
 
   return 0;
