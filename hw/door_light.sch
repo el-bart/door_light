@@ -16219,8 +16219,8 @@ Source: http://www.infineon.com/upload/Document/BSP170P_Rev2.4.pdf</description>
 <part name="C1" library="rcl" deviceset="CPOL-EU" device="153CLV-0810" value="100uF"/>
 <part name="C4" library="rcl" deviceset="CPOL-EU" device="153CLV-0810" value="100uF"/>
 <part name="L1" library="rcl" deviceset="L-EU" device="PIS2816" value="150uH"/>
-<part name="R2" library="rcl" deviceset="R-EU_" device="M1206" value="180R"/>
-<part name="R1" library="rcl" deviceset="R-EU_" device="R0603" value="0.22R"/>
+<part name="R2" library="rcl" deviceset="R-EU_" device="R0603" value="180R"/>
+<part name="R1" library="rcl" deviceset="R-EU_" device="M1206" value="0.22R"/>
 <part name="SUPPLY13" library="supply2" deviceset="0V" device=""/>
 <part name="SUPPLY20" library="supply2" deviceset="0V" device=""/>
 <part name="R4" library="rcl" deviceset="R-EU_" device="R0603" value="24kR"/>
