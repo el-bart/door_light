@@ -16236,7 +16236,7 @@ Source: http://www.infineon.com/upload/Document/BSP170P_Rev2.4.pdf</description>
 <part name="SUPPLY23" library="supply2" deviceset="+4.1V" device="" value="Vbatt"/>
 <part name="SUPPLY24" library="supply2" deviceset="0V" device=""/>
 <part name="SUPPLY25" library="supply2" deviceset="0V" device=""/>
-<part name="LED2" library="led" deviceset="LED" device="CHIPLED_0805" value="IR"/>
+<part name="LED2" library="led" deviceset="LED" device="CHIPLED_1206" value="IR"/>
 <part name="LED1" library="led" deviceset="LED" device="CHIPLED_0603" value="RED"/>
 <part name="R6" library="rcl" deviceset="R-EU_" device="R0603" value="470R"/>
 <part name="R5" library="rcl" deviceset="R-EU_" device="R0603" value="470R"/>
@@ -16245,7 +16245,7 @@ Source: http://www.infineon.com/upload/Document/BSP170P_Rev2.4.pdf</description>
 <part name="T2" library="opto-trans-smd" deviceset="KP-3216P3C" device=""/>
 <part name="SUPPLY28" library="supply2" deviceset="0V" device=""/>
 <part name="Q1" library="transistor-fet" deviceset="BSP170P" device="" value="BSP250"/>
-<part name="T1" library="zetex" deviceset="NMOSSOT23" device=""/>
+<part name="T1" library="zetex" deviceset="NMOSSOT23" device="" value="n-mosfet"/>
 <part name="SJ1" library="jumper" deviceset="SJ" device="W" value="PWR"/>
 <part name="SJ2" library="jumper" deviceset="SJ" device="W" value="LIGHT"/>
 </parts>
