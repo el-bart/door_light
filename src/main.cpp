@@ -18,21 +18,19 @@ inline void setupAdc(void)
 
 inline void setupPorts(void)
 {
-  DDRB&=~_BV(2);        // PB2 as input (phototransistor; ADC1)
-  DDRB|= _BV(3);        // PB3 as output (IR and RED LEDs)
-  DDRB|= _BV(4);        // PB4 as output (main light)
+  DDRB |=  _BV(0);        // PB3 as output (IR and RED LEDs)
+  DDRB |=  _BV(1);        // PB4 as output (main light)
+  //DDRB &= ~_BV(2);        // PB2 as input (phototransistor; ADC1)
 }
 
 
-inline void bit(const uint8_t b, bool on)
+inline void bit(const uint8_t b, const bool on)
 {
-  if(on)
-    PORTB|= _BV(b);
-  else
-    PORTB&=~_BV(b);
+  if(on) PORTB |=  _BV(b);
+  else   PORTB &= ~_BV(b);
 }
-inline void ctrlLed(bool on) { bit(3, on); }
-inline void light(bool on)   { bit(4, on); }
+inline void ctrlLed(const bool on) { bit(0, on); }
+inline void light(const bool on)   { bit(1, not on); }
 
 
 uint8_t readAdc(void)
@@ -71,11 +69,22 @@ int main(void)
 {
   // init program
   setupPorts();
-  setupAdc();
+  //setupAdc();
 
-  // initial state s
-  ctrlLed(true);
+  // initial state
+  ctrlLed(false);
   light(false);
+
+  // TODO                                               
+  for(;;)
+  {
+    _delay_ms(1000);
+    ctrlLed(true);
+    _delay_ms(1000);
+    ctrlLed(false);
+  }
+  // TODO                                               
+
   uint8_t  read[2] = { irLight(), irLight() };
   uint8_t  index   = 0;
   uint16_t onLeft  = 2*20;              // light up at start for 2[s]
