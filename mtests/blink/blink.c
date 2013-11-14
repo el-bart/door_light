@@ -4,15 +4,13 @@
 
 int main(void)
 {
-  DDRB|=_BV(3);             // PB3 as output
-  DDRB|=_BV(4);             // PB4 as output
+  DDRB|=0xFF;               // while PB as output
 
-  PORTB^=_BV(3);            // blink interchangably
+  PORTB^=0xFF;              // blink interchangably
 
   for(;;)
   {
-    PORTB^=_BV(3);          // negate PB3
-    PORTB^=_BV(4);          // negate PB4
+  PORTB^=0xFF;              // negate
     // sleep 0.5[s]
     for(uint8_t i=0; i<5; ++i)
       _delay_ms(100);

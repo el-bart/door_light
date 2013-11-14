@@ -60,9 +60,9 @@
 <wire x1="50" y1="39.75" x2="50" y2="74.38" width="0" layer="20"/>
 <wire x1="50" y1="74.38" x2="17.78" y2="74.38" width="0" layer="20"/>
 <wire x1="17.78" y1="74.38" x2="17.78" y2="39.75" width="0" layer="20"/>
-<text x="43.44" y="68.94" size="1.27" layer="1" rot="MR270">v2.0.0-rc4</text>
 <text x="48.8" y="55.6" size="1.27" layer="1" rot="R90">Vcc</text>
 <text x="23.7" y="66.3" size="1.27" layer="1">L</text>
+<text x="42" y="69" size="1.27" layer="1" rot="R270">v2.0.0-rc4</text>
 </plain>
 <libraries>
 <library name="atmel">
