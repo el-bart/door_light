@@ -39,54 +39,15 @@ int main(void)
   LedLight   light(pwm);
   Adc        adc;
   AdcSampler sampler(0);
-  //sei();                    // enable interrupts globaly
+  sei();                    // enable interrupts globaly
 
-  //light.enable(false);
-  //ir.enable(true);
-  light.enable(false);
 
-  for(;;) { }
-
-  for(;;)
+  while(true)
   {
-    for(uint8_t f=0; f<0xFFu; f+=50)
-    {
-      ir.fill(f);
-      _delay_ms(300);
-    }
+    // TODO
+    // save power until next interrupt from the timer
+    PowerSave::idle();
   }
-
-#if 0
-  {
-    ir.enable(true);
-    _delay_ms(1);
-    const auto first = adc.irVoltage();
-    for(uint8_t i=0; i<irSamples; ++i)
-      sampler.add(first);
-    ir.enable(false);
-    _delay_ms(50);
-  }
-#endif
-
-#if 0
-  // TODO                                               
-  ir.enable(true);
-  for(;;)
-  {
-    light.enable(true);
-    const auto v = adc.irVoltage();
-    sampler.add(v);
-    const auto min = sampler.min();
-    const auto max = sampler.max();
-    const auto d   = max-min;
-    const auto s   = d<<4;
-    wait(s);
-
-    light.enable(false);
-    wait(1000-s);
-  }
-  // TODO                                               
-#endif
 
   /*
   uint8_t  read[2] = { adc.irVoltage(), adc.irVoltage() };
