@@ -14,7 +14,7 @@ public:
     pwm_(pwm)
   {
     enable(false);
-    fill(0xFFu/2u);
+    fill(irFill);
   }
 
   void fill(const uint8_t f)

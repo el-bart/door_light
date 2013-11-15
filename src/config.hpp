@@ -35,5 +35,6 @@ constexpr uint16_t irDiff = 100;    // voltage difference to threat as a trigger
 
 // misc constants
 constexpr uint8_t irSamples = 6;    // number of samples to collect for thresholding
+constexpr uint8_t irFill    = 50;   // fill level of the PWM for Ctrl setting; 0-255
 
 #endif
