@@ -31,6 +31,12 @@ T distance(const T a, const T b)
 }
 
 
+void wait(uint16_t ms)
+{
+  for(uint16_t i=0; i<ms; ++i)
+    _delay_ms(1);
+}
+
 //
 // MAIN PROGRAM
 //
@@ -48,13 +54,13 @@ int main(void)
   // TODO                                               
   for(;;)
   {
-    _delay_ms(1000);
     ctrlLed(true);
-    _delay_ms(1000);
+    const auto v = adc.irVoltage();
+    const auto s = (v&0xFF)*4;
+    wait(s);
+
     ctrlLed(false);
-    //...           
-    adc.irVoltage();
-    adc.vccVoltage();
+    wait(1000-s);
   }
   // TODO                                               
 
