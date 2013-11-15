@@ -26,4 +26,14 @@ constexpr auto irIn    = _BV(PB3);  // IR phototransistor voltage monitoring inp
 constexpr auto vccIn   = _BV(PB4);  // supply voltage monitoring input
 }
 
+// some thresholds
+namespace Thresold
+{
+constexpr uint16_t minVcc = 3400;   // minimum operational voltage (3.4[V]);
+constexpr uint16_t irDiff = 100;    // voltage difference to threat as a trigger (in millivolts)
+}
+
+// misc constants
+constexpr uint8_t irSamples = 6;    // number of samples to collect for thresholding
+
 #endif
