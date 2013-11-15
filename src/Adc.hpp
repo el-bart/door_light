@@ -89,9 +89,10 @@ private:
     return {(high<<8u)|low};        // do explicit {} to ensure no implicit conversions
   }
 
-  Millivolts scale(const uint16_t in)
+  Millivolts scale(uint16_t in)
   {
-    // compute actual voltage, multiplied by 10, to avoid floating point emulation
+    in &= uint16_t{0xFFFC};                             // drop 2 least signifficant bits as a noise
+    // compute actual voltage in millivolts.
     // general equation is: ADC=Vin*1024/Vref
     // this we get:         Vin=ADC*Vref/1024
     constexpr uint32_t vref{1100};                      // reference voltage is 1.1[V]
