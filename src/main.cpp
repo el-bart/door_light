@@ -3,24 +3,13 @@
 #include <util/delay.h>
 #include <inttypes.h>
 
-
-inline void setupAdc(void)
-{
-  ADMUX &=~_BV(REFS0);  // Vref=Vcc
-  ADMUX |= _BV(ADLAR);  // left-adjust result, so that ADCH will contain full result
-  ADMUX &=~_BV(MUX1);   // select ADC1
-  ADMUX |= _BV(MUX0);   // ...
-  ADCSRA&=~_BV(ADPS2);  // set prescaler to 011 (N=8), which is 150kHz
-  ADCSRA|= _BV(ADPS1);  // ...
-  ADCSRA|= _BV(ADPS0);  // ...
-}
+#include "Adc.hpp"
 
 
 inline void setupPorts(void)
 {
   DDRB |=  _BV(0);        // PB3 as output (IR and RED LEDs)
   DDRB |=  _BV(1);        // PB4 as output (main light)
-  //DDRB &= ~_BV(2);        // PB2 as input (phototransistor; ADC1)
 }
 
 
@@ -31,26 +20,6 @@ inline void bit(const uint8_t b, const bool on)
 }
 inline void ctrlLed(const bool on) { bit(0, on); }
 inline void light(const bool on)   { bit(1, not on); }
-
-
-uint8_t readAdc(void)
-{
-  ADCSRA|=_BV(ADSC);                // start convertion
-  while( ADCSRA & _BV(ADSC) ) {}    // wait for conversion to finish
-  return ADCH;                      // return the result
-}
-
-inline uint8_t irLight(void)
-{
-  ADCSRA|= _BV(ADEN);               // enable ADC
-  readAdc();                        // discard first reading
-  const uint8_t adc = readAdc();    // this one is reasonable
-  ADCSRA|= _BV(ADEN);               // disable ADC
-  // compute actual voltage, multiplied by 10, to avoid floating point emulation
-  constexpr uint8_t vref = 5;                       // reference voltage
-  const uint16_t    vin  = (adc*(vref*10l))/1024l;  // conversion equation
-  return vin;
-}
 
 
 template<typename T>
@@ -67,6 +36,7 @@ T distance(const T a, const T b)
 //
 int main(void)
 {
+  Adc adc;
   // init program
   setupPorts();
   //setupAdc();
@@ -82,10 +52,14 @@ int main(void)
     ctrlLed(true);
     _delay_ms(1000);
     ctrlLed(false);
+    //...           
+    adc.irVoltage();
+    adc.vccVoltage();
   }
   // TODO                                               
 
-  uint8_t  read[2] = { irLight(), irLight() };
+  /*
+  uint8_t  read[2] = { adc.irVoltage(), adc.irVoltage() };
   uint8_t  index   = 0;
   uint16_t onLeft  = 2*20;              // light up at start for 2[s]
 
@@ -108,6 +82,7 @@ int main(void)
     index       = index==0 ? 1 : 0;     // change index to oposite
     read[index] = irLight();            // perform reading
   }
+  */
 
   // program never reaches here
   return 0;
