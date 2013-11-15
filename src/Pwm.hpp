@@ -40,6 +40,8 @@ public:
   void fillA(const uint8_t fill) { OCR0A = fill; }
   void fillB(const uint8_t fill) { OCR0B = fill; }
 
+  constexpr static uint16_t frequency(void) { return 600; }
+
 private:
   void enableImpl(const bool enable, const uint8_t bits, const uint8_t set)
   {
