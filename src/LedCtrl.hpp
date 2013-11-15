@@ -3,24 +3,35 @@
 
 #include "config.hpp"
 #include "LedBase.hpp"
+#include "Pwm.hpp"
 
 /** @brief control LEDs (IR and red) controll class.
  */
 class LedCtrl: public LedBase<Pin::ctrlLed>
 {
 public:
-  LedCtrl(void)
+  explicit LedCtrl(Pwm& pwm):
+    pwm_(pwm)
   {
     enable(false);
-    // PWM setup - use OC0A
-    static_assert(Pin::ctrlLed == _BV(PB0), "PWM set to another channel");
+    fill(0xFFu/2u);
   }
 
-  void pwm(uint8_t fill)
+  void fill(const uint8_t f)
   {
+    static_assert(Pin::ctrlLed == _BV(PB0), "PWM set to another channel");  // PWM setup to use OC0A
+    pwm_.fillA(f);
   }
 
-  void enable(const bool on) { set(on); }
+  void enable(const bool on)
+  {
+    pwm_.enableA(on);
+    if(not on)
+      set(false);
+  }
+
+private:
+  Pwm& pwm_;
 };
 
 #endif

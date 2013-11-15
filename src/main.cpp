@@ -35,11 +35,26 @@ using AdcSampler = Sampler<Adc::Millivolts, irSamples>;
 int main(void)
 {
   Pwm        pwm;
-  LedCtrl    ir;
-  LedLight   light;
+  LedCtrl    ir(pwm);
+  LedLight   light(pwm);
   Adc        adc;
   AdcSampler sampler(0);
-  sei();                    // enable interrupts globaly
+  //sei();                    // enable interrupts globaly
+
+  //light.enable(false);
+  //ir.enable(true);
+  light.enable(false);
+
+  for(;;) { }
+
+  for(;;)
+  {
+    for(uint8_t f=0; f<0xFFu; f+=50)
+    {
+      ir.fill(f);
+      _delay_ms(300);
+    }
+  }
 
 #if 0
   {
@@ -53,6 +68,7 @@ int main(void)
   }
 #endif
 
+#if 0
   // TODO                                               
   ir.enable(true);
   for(;;)
@@ -70,6 +86,7 @@ int main(void)
     wait(1000-s);
   }
   // TODO                                               
+#endif
 
   /*
   uint8_t  read[2] = { adc.irVoltage(), adc.irVoltage() };
@@ -98,5 +115,5 @@ int main(void)
   */
 
   // program never reaches here
-  return 0;
+  for(;;) { }
 }
