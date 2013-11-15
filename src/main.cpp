@@ -4,6 +4,7 @@
 #include <inttypes.h>
 
 #include "Adc.hpp"
+#include "Sampler.hpp"
 #include "LedCtrl.hpp"
 #include "LedLight.hpp"
 
@@ -22,25 +23,45 @@ void wait(uint16_t ms)
     _delay_ms(1);
 }
 
+
+using AdcSampler = Sampler<Adc::Millivolts, irSamples>;
+
 //
 // MAIN PROGRAM
 //
 int main(void)
 {
-  LedCtrl  ir;
-  LedLight light;
-  Adc      adc;
+  LedCtrl    ir;
+  LedLight   light;
+  Adc        adc;
+  AdcSampler sampler(0);
 
-
-  // TODO                                               
-  for(;;)
+#if 0
   {
     ir.enable(true);
+    _delay_ms(1);
+    const auto first = adc.irVoltage();
+    for(uint8_t i=0; i<irSamples; ++i)
+      sampler.add(first);
+    ir.enable(false);
+    _delay_ms(50);
+  }
+#endif
+
+  // TODO                                               
+  ir.enable(true);
+  for(;;)
+  {
+    light.enable(true);
     const auto v = adc.irVoltage();
-    const auto s = (v&0xFF)*4;
+    sampler.add(v);
+    const auto min = sampler.min();
+    const auto max = sampler.max();
+    const auto d   = max-min;
+    const auto s   = d<<4;
     wait(s);
 
-    ir.enable(false);
+    light.enable(false);
     wait(1000-s);
   }
   // TODO                                               
