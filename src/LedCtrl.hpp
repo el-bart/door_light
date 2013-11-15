@@ -13,8 +13,8 @@ public:
   explicit LedCtrl(Pwm& pwm):
     pwm_(pwm)
   {
-    enable(false);
     fill(irFill);
+    enable(true);
   }
 
   void fill(const uint8_t f)

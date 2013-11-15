@@ -28,13 +28,13 @@ public:
 
   void enableA(const bool e)
   {
-    // clear OC0A on match, set on TOP.
+    // clear OC0A on match, set on TOP (n-mosfet).
     enableImpl(e, _BV(COM0A1)|_BV(COM0A0), _BV(COM0A1));
   }
   void enableB(const bool e)
   {
-    // clear OC0B on match, set on TOP.
-    enableImpl(e, _BV(COM0B1)|_BV(COM0B0), _BV(COM0B1));
+    // set OC0B on match, clear on TOP (p-mosfet).
+    enableImpl(e, _BV(COM0B1)|_BV(COM0B0), _BV(COM0B1)|_BV(COM0B0));
   }
 
   void fillA(const uint8_t fill) { OCR0A = fill; }

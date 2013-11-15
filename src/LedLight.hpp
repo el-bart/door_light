@@ -12,8 +12,8 @@ public:
   explicit LedLight(Pwm& pwm):
     pwm_(pwm)
   {
-    enable(false);
     fill(0xFFu);
+    enable(false);
   }
 
   void fill(const uint8_t f)
