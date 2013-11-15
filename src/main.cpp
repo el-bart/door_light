@@ -1,12 +1,15 @@
 #include "config.hpp"
 #include <avr/io.h>
+#include <avr/interrupt.h>
 #include <util/delay.h>
 #include <inttypes.h>
 
 #include "Adc.hpp"
+#include "Pwm.hpp"
 #include "Sampler.hpp"
 #include "LedCtrl.hpp"
 #include "LedLight.hpp"
+#include "PowerSave.hpp"
 
 template<typename T>
 T distance(const T a, const T b)
@@ -31,10 +34,12 @@ using AdcSampler = Sampler<Adc::Millivolts, irSamples>;
 //
 int main(void)
 {
+  Pwm        pwm;
   LedCtrl    ir;
   LedLight   light;
   Adc        adc;
   AdcSampler sampler(0);
+  sei();                    // enable interrupts globaly
 
 #if 0
   {
