@@ -4,23 +4,8 @@
 #include <inttypes.h>
 
 #include "Adc.hpp"
-
-
-inline void setupPorts(void)
-{
-  DDRB |=  _BV(0);        // PB3 as output (IR and RED LEDs)
-  DDRB |=  _BV(1);        // PB4 as output (main light)
-}
-
-
-inline void bit(const uint8_t b, const bool on)
-{
-  if(on) PORTB |=  _BV(b);
-  else   PORTB &= ~_BV(b);
-}
-inline void ctrlLed(const bool on) { bit(0, on); }
-inline void light(const bool on)   { bit(1, not on); }
-
+#include "LedCtrl.hpp"
+#include "LedLight.hpp"
 
 template<typename T>
 T distance(const T a, const T b)
@@ -42,24 +27,20 @@ void wait(uint16_t ms)
 //
 int main(void)
 {
-  Adc adc;
-  // init program
-  setupPorts();
-  //setupAdc();
+  LedCtrl  ir;
+  LedLight light;
+  Adc      adc;
 
-  // initial state
-  ctrlLed(false);
-  light(false);
 
   // TODO                                               
   for(;;)
   {
-    ctrlLed(true);
+    ir.enable(true);
     const auto v = adc.irVoltage();
     const auto s = (v&0xFF)*4;
     wait(s);
 
-    ctrlLed(false);
+    ir.enable(false);
     wait(1000-s);
   }
   // TODO                                               
