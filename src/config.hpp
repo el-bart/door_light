@@ -8,6 +8,10 @@
 #include <inttypes.h>
 #include <avr/io.h>
 
+//
+// basic constants
+//
+
 // units commonly used
 constexpr uint32_t kHz=1000L;
 constexpr uint32_t MHz=1000L*kHz;
@@ -16,6 +20,15 @@ constexpr uint32_t MHz=1000L*kHz;
 constexpr uint32_t fcpu = (9*MHz+600*kHz)/8;
 // needs to be a define as well...
 #define F_CPU fcpu
+
+//
+// common types
+//
+using Millivolts = uint16_t;
+
+//
+// misc settings
+//
 
 // bits on port definitions
 namespace Pin
@@ -29,8 +42,8 @@ constexpr auto vccIn   = _BV(PB4);  // supply voltage monitoring input
 // some thresholds
 namespace Thresold
 {
-constexpr uint16_t minVcc = 3400;   // minimum operational voltage (3.4[V]);
-constexpr uint16_t irDiff = 100;    // voltage difference to threat as a trigger (in millivolts)
+constexpr Millivolts minVcc = 3400; // minimum operational voltage (3.4[V]);
+constexpr Millivolts irDiff = 100;  // voltage difference to threat as a trigger (in millivolts)
 }
 
 // misc constants

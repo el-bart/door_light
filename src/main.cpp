@@ -10,6 +10,7 @@
 #include "LedCtrl.hpp"
 #include "LedLight.hpp"
 #include "PowerSave.hpp"
+#include "LowPowerHandler.hpp"
 
 template<typename T>
 T distance(const T a, const T b)
@@ -27,7 +28,7 @@ void wait(uint16_t ms)
 }
 
 
-using AdcSampler = Sampler<Adc::Millivolts, irSamples>;
+using AdcSampler = Sampler<Millivolts, irSamples>;
 
 //
 // MAIN PROGRAM
@@ -41,10 +42,16 @@ int main(void)
   AdcSampler sampler(0);
   sei();                    // enable interrupts globaly
 
-
+  //
+  // infinite system loop
+  //
+  uint16_t cycle = 0;       // cycles counter
   while(true)
   {
+    //const auto voltIr = adc.irVoltage();
     // TODO
+
+    ++cycle;
     // save power until next interrupt from the timer
     PowerSave::idle();
   }

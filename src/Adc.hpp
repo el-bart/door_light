@@ -10,8 +10,6 @@
 class Adc
 {
 public:
-  typedef uint16_t Millivolts;
-
   /** @brief initialize ADC.
    */
   Adc(void)
