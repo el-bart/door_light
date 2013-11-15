@@ -3,7 +3,6 @@
 
 #include "config.hpp"
 #include <avr/io.h>
-#include <util/delay.h>
 #include <inttypes.h>
 
 /** @brief ADC wrapper, with proper computations.
