@@ -12,6 +12,12 @@ public:
   LedLight(void)
   {
     enable(false);
+    // PWM setup - use OC0B
+    static_assert(Pin::light == _BV(PB1), "PWM set to another channel");
+  }
+
+  void pwm(uint8_t fill)
+  {
   }
 
   void enable(const bool on) { set(not on); }
