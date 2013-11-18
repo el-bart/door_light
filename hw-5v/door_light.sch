@@ -16208,7 +16208,7 @@ Source: http://www.infineon.com/upload/Document/BSP170P_Rev2.4.pdf</description>
 <part name="SUPPLY19" library="supply2" deviceset="0V" device=""/>
 <part name="U1" library="Texas Instruments_By_element14_Batch_1" deviceset="MC33063ADE4" device=""/>
 <part name="SUPPLY26" library="supply2" deviceset="+4.1V" device="" value="Vbatt"/>
-<part name="F1" library="rcl" deviceset="R-EU_" device="MELF0204W" value="SD075-16 (F750mA)"/>
+<part name="F1" library="rcl" deviceset="R-EU_" device="MELF0204W" value="F750mA"/>
 <part name="R7" library="rcl" deviceset="R-EU_" device="R0402" value="10kR"/>
 <part name="D1" library="diode" deviceset="MBRS130LT3" device="" value=" MBRS140T3G"/>
 <part name="C3" library="rcl" deviceset="C-EU" device="C1206" value="1.5nF"/>
@@ -16245,7 +16245,7 @@ Source: http://www.infineon.com/upload/Document/BSP170P_Rev2.4.pdf</description>
 <part name="T2" library="opto-trans-smd" deviceset="KP-3216P3C" device=""/>
 <part name="SUPPLY28" library="supply2" deviceset="0V" device=""/>
 <part name="Q1" library="transistor-fet" deviceset="BSP170P" device="" value="BSP250"/>
-<part name="T1" library="zetex" deviceset="NMOSSOT23" device="" value="n-mosfet"/>
+<part name="T1" library="zetex" deviceset="NMOSSOT23" device="" value="IRFML8244"/>
 <part name="SJ1" library="jumper" deviceset="SJ" device="W" value="PWR"/>
 <part name="SJ2" library="jumper" deviceset="SJ" device="W" value="LIGHT"/>
 <part name="R12" library="rcl" deviceset="R-EU_" device="R0603" value="100kR"/>
@@ -16309,7 +16309,7 @@ Source: http://www.infineon.com/upload/Document/BSP170P_Rev2.4.pdf</description>
 <instance part="SUPPLY28" gate="0V" x="129.54" y="7.62"/>
 <instance part="Q1" gate="G$1" x="-38.1" y="144.78"/>
 <instance part="T1" gate="A" x="30.48" y="15.24" rot="MR0"/>
-<instance part="SJ1" gate="1" x="-45.72" y="35.56" rot="R90"/>
+<instance part="SJ1" gate="1" x="-48.26" y="35.56" rot="R90"/>
 <instance part="SJ2" gate="1" x="-10.16" y="35.56" rot="R90"/>
 <instance part="R12" gate="G$1" x="48.26" y="58.42" rot="R90"/>
 <instance part="R13" gate="G$1" x="48.26" y="33.02" rot="R90"/>
@@ -16393,7 +16393,7 @@ Source: http://www.infineon.com/upload/Document/BSP170P_Rev2.4.pdf</description>
 <segment>
 <pinref part="SJ1" gate="1" pin="1"/>
 <pinref part="SUPPLY14" gate="0V" pin="0V"/>
-<wire x1="-30.48" y1="30.48" x2="-45.72" y2="30.48" width="0.1524" layer="91"/>
+<wire x1="-30.48" y1="30.48" x2="-48.26" y2="30.48" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="R12" gate="G$1" pin="1"/>
@@ -16531,7 +16531,7 @@ Source: http://www.infineon.com/upload/Document/BSP170P_Rev2.4.pdf</description>
 <net name="N$8" class="0">
 <segment>
 <pinref part="F1" gate="G$1" pin="1"/>
-<wire x1="-43.18" y1="40.64" x2="-45.72" y2="40.64" width="0.1524" layer="91"/>
+<wire x1="-43.18" y1="40.64" x2="-48.26" y2="40.64" width="0.1524" layer="91"/>
 <pinref part="SJ1" gate="1" pin="2"/>
 </segment>
 </net>

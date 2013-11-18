@@ -1782,7 +1782,7 @@ design rules under a new name.</description>
 <attribute name="SUPPLIER" value="TI" x="34.02" y="60.96" size="1.778" layer="27" display="off"/>
 <attribute name="OC_FARNELL" value="1053588" x="34.02" y="60.96" size="1.778" layer="27" display="off"/>
 </element>
-<element name="F1" library="rcl" package="MINI_MELF-0204W" value="SD075-16 (F750mA)" x="42.53" y="58.41" rot="R180"/>
+<element name="F1" library="rcl" package="MINI_MELF-0204W" value="F750mA" x="42.53" y="58.41" rot="R180"/>
 <element name="R7" library="rcl" package="R0402" value="10kR" x="23.9" y="54.39" rot="R180"/>
 <element name="D1" library="diode" package="SMB" value=" MBRS140T3G" x="28.75" y="68.04"/>
 <element name="C3" library="rcl" package="C1206" value="1.5nF" x="27.67" y="61.42" rot="R270"/>
@@ -1808,7 +1808,7 @@ design rules under a new name.</description>
 <attribute name="OC_FARNELL" value="unknown" x="22.67" y="48.18" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="Q1" library="transistor-fet" package="SOT223" value="BSP250" x="37" y="52"/>
-<element name="T1" library="zetex" package="SOT-23" value="n-mosfet" x="40" y="44" rot="R90">
+<element name="T1" library="zetex" package="SOT-23" value="IRFML8244" x="40" y="44" rot="R90">
 <attribute name="OC_NEWARK" value="unknown" x="40" y="44" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="MPN" value="" x="40" y="44" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="MF" value="" x="40" y="44" size="1.778" layer="27" rot="R90" display="off"/>
