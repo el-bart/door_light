@@ -44,37 +44,43 @@ int main(void)
   // enable interrupts globaly
   sei();
 
+  for(int i=0; i<4*5; ++i)
+  {
+    ir.enable(false);
+    _delay_ms(100);
+    ir.enable(true);
+    _delay_ms(100);
+  }
+
   //
   // infinite system loop
   //
-  uint16_t timerCycle = 0;  // counter for timer cycles
+  uint16_t timerCycle = 0;      // counter for timer cycles
   uint16_t nextIrMeasure = 0;   // on which timer count do next IR measurement?
-  uint8_t  secInCycle = 0;  // number of second within the cycle
+  uint8_t  secInCycle = 0;      // number of second within the cycle
   while(true)
   {
+    // do IR light measurement on every predefined time slot
     if( timerCycle >= nextIrMeasure )
     {
-      // TODO measure
-      // set next measurement after 
+      // measure and check if it has been signaled to turn on the lights
+      sampler.add( adc.irVoltage() );
+      if( distance( sampler.oldest(), sampler.newest() ) >= Voltage::irThreshold )
+        secInCycle = 1;
+
+      // set next measurement after predefined amount of time
       constexpr auto f = Pwm::frequency();
       constexpr auto d = f / Light::irMeasureSec;
       nextIrMeasure = ( nextIrMeasure + d ) % f;
     }
-    //const auto voltIr = adc.irVoltage();
-    // TODO
-    const bool turnOn = true;
 
-    if(turnOn)
-    {
-      // TODO: initial setup
-      secInCycle = 1;
-    }
-
+    // enable light with dim-in and dim-out cycles
     if( secInCycle > 0u )
     {
       if( secInCycle <= Light::dimIn )
       {
         // TODO
+        light.enable(true); // TODO: temporary soultion
       }
       else
         if( secInCycle <= Light::lightOn )
@@ -90,6 +96,7 @@ int main(void)
           {
             // TODO: turn off
             secInCycle = 0;
+            light.enable(false);
           }
     } // if(in light cycle)
 
@@ -99,7 +106,11 @@ int main(void)
     if( timerCycle >= Pwm::frequency() )
     {
       timerCycle = 0;                       // reset counter
-      lph.handle( adc.vccVoltage() );       // check Vcc (note: may never return from here)
+      // TODO: temporary removed, not to break stuff while testing
+      //lph.handle( adc.vccVoltage() );       // check Vcc (note: may never return from here)
+      // move to next second in the light loop, if on
+      if(secInCycle)
+        ++secInCycle;
     }
     // save power until next interrupt from the timer
     PowerSave::idle();

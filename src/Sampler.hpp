@@ -19,6 +19,7 @@ public:
 
   void add(const T sample)
   {
+    ++idx_;
     if(idx_>=N)
       idx_=0;
     samples_[idx_] = sample;
@@ -34,6 +35,18 @@ public:
     return find( [](T const& lhs, T const& rhs){ return lhs>rhs; } );
   }
 
+  T oldest(void) const
+  {
+    if(idx_==N-1)
+      return samples_[0u];
+    return samples_[idx_+1u];
+  }
+
+  T newest(void) const
+  {
+    return samples_[idx_];
+  }
+
 private:
   template<typename F>
   T find(F f) const
@@ -45,8 +58,8 @@ private:
     return out;
   }
 
-  uint8_t idx_;
-  T       samples_[N];
+  uint8_t idx_;         // position last write was mad to
+  T       samples_[N];  // collected samples (cicrular buffer)
 };
 
 #endif
