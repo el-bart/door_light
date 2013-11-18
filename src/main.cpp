@@ -35,23 +35,72 @@ using AdcSampler = Sampler<Millivolts, Light::irSamples>;
 //
 int main(void)
 {
-  Pwm        pwm;
-  LedCtrl    ir(pwm);
-  LedLight   light(pwm);
-  Adc        adc;
-  AdcSampler sampler(0);
-  sei();                    // enable interrupts globaly
+  Pwm             pwm;
+  LedCtrl         ir(pwm);
+  LedLight        light(pwm);
+  Adc             adc;
+  AdcSampler      sampler(0);
+  LowPowerHandler lph;
+  // enable interrupts globaly
+  sei();
 
   //
   // infinite system loop
   //
-  uint16_t cycle = 0;       // cycles counter
+  uint16_t timerCycle = 0;  // counter for timer cycles
+  uint16_t nextIrMeasure = 0;   // on which timer count do next IR measurement?
+  uint8_t  secInCycle = 0;  // number of second within the cycle
   while(true)
   {
+    if( timerCycle >= nextIrMeasure )
+    {
+      // TODO measure
+      // set next measurement after 
+      constexpr auto f = Pwm::frequency();
+      constexpr auto d = f / Light::irMeasureSec;
+      nextIrMeasure = ( nextIrMeasure + d ) % f;
+    }
     //const auto voltIr = adc.irVoltage();
     // TODO
+    const bool turnOn = true;
 
-    ++cycle;
+    if(turnOn)
+    {
+      // TODO: initial setup
+      secInCycle = 1;
+    }
+
+    if( secInCycle > 0u )
+    {
+      if( secInCycle <= Light::dimIn )
+      {
+        // TODO
+      }
+      else
+        if( secInCycle <= Light::lightOn )
+        {
+          // TODO
+        }
+        else
+          if( secInCycle <= Light::dimOut )
+          {
+            // TODO
+          }
+          else
+          {
+            // TODO: turn off
+            secInCycle = 0;
+          }
+    } // if(in light cycle)
+
+    // mark new cycle
+    ++timerCycle;
+    // check if 1s has passed
+    if( timerCycle >= Pwm::frequency() )
+    {
+      timerCycle = 0;                       // reset counter
+      lph.handle( adc.vccVoltage() );       // check Vcc (note: may never return from here)
+    }
     // save power until next interrupt from the timer
     PowerSave::idle();
   }
@@ -81,7 +130,4 @@ int main(void)
     read[index] = irLight();            // perform reading
   }
   */
-
-  // program never reaches here
-  for(;;) { }
 }

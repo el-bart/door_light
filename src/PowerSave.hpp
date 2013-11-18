@@ -15,6 +15,14 @@ struct PowerSave
     set_sleep_mode(SLEEP_MODE_IDLE);
     sleep_mode();
   }
+
+  /** @brief enter power-down mode.
+   */
+  static void powerDown(void)
+  {
+    set_sleep_mode(SLEEP_MODE_PWR_DOWN);
+    sleep_mode();
+  }
 }; // struct PowerSave
 
 #endif
