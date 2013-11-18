@@ -1,2 +1,3 @@
 * U on phototransistor changes up to 100mV on dimm and up to 200mV on external polarity (when LED is close).
 * phototransistor reacts strongly on external light.
+* IR diode current should be 20-30mA.
