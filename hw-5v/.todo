@@ -9,4 +9,10 @@
     <note priority="medium" time="1384789099">
         add 100uF next to C1 as it heats up during work
     </note>
+    <note priority="medium" time="1384790321">
+        add transistor for controling PWM of DC/DC output (light LEDs)
+    </note>
+    <note priority="medium" time="1384790368">
+        switch PWM to control DC/DC output power, rather than its on/off
+    </note>
 </todo>
