@@ -14363,15 +14363,15 @@ Source: http://focus.ti.com/lit/ds/symlink/ua78l05.pdf</description>
 <part name="SUPPLY19" library="supply2" deviceset="0V" device=""/>
 <part name="F1" library="rcl" deviceset="R-EU_" device="MELF0204W" value="F750mA"/>
 <part name="R5" library="rcl" deviceset="R-EU_" device="R0402" value="10kR"/>
-<part name="R7" library="rcl" deviceset="R-EU_" device="R0603" value="2.9kR"/>
+<part name="R7" library="rcl" deviceset="R-EU_" device="R0603" value="2.7kR"/>
 <part name="R8" library="rcl" deviceset="R-EU_" device="R0603" value="10kR"/>
 <part name="R6" library="rcl" deviceset="R-EU_" device="R0603" value="10kR"/>
-<part name="R9" library="rcl" deviceset="R-EU_" device="R0603" value="2.9kR"/>
+<part name="R9" library="rcl" deviceset="R-EU_" device="R0603" value="2.7kR"/>
 <part name="SUPPLY24" library="supply2" deviceset="0V" device=""/>
 <part name="SUPPLY25" library="supply2" deviceset="0V" device=""/>
 <part name="LED2" library="led" deviceset="LED" device="CHIPLED_1206" value="IR"/>
 <part name="LED1" library="led" deviceset="LED" device="CHIPLED_0603" value="RED"/>
-<part name="R2" library="rcl" deviceset="R-EU_" device="R0603" value="470R"/>
+<part name="R2" library="rcl" deviceset="R-EU_" device="R0603" value="180R"/>
 <part name="R1" library="rcl" deviceset="R-EU_" device="R0603" value="470R"/>
 <part name="T3" library="opto-trans-smd" deviceset="KP-3216P3C" device=""/>
 <part name="SUPPLY28" library="supply2" deviceset="0V" device=""/>
