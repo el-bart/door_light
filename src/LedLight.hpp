@@ -12,7 +12,7 @@ public:
   explicit LedLight(Pwm& pwm):
     pwm_(pwm)
   {
-    fill(0xFFu);
+    fill(Light::lightFill);
     enable(false);
   }
 

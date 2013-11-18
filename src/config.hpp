@@ -51,7 +51,7 @@ namespace Light
 {
 constexpr uint8_t irSamples = 6;    // number of samples to collect for thresholding
 constexpr uint8_t irFill    = 50;   // fill level of the PWM for Ctrl setting; 0-255
-//constexpr uint8_t 
+constexpr uint8_t lightFill = 0xFF; // PWM fill for main light DC/DC: 0-255
 }
 
 #endif
