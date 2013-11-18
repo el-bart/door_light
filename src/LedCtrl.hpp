@@ -13,7 +13,7 @@ public:
   explicit LedCtrl(Pwm& pwm):
     pwm_(pwm)
   {
-    fill(irFill);
+    fill(Light::irFill);
     enable(true);
   }
 

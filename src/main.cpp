@@ -28,7 +28,7 @@ void wait(uint16_t ms)
 }
 
 
-using AdcSampler = Sampler<Millivolts, irSamples>;
+using AdcSampler = Sampler<Millivolts, Light::irSamples>;
 
 //
 // MAIN PROGRAM
