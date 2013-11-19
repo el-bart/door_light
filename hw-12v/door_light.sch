@@ -14723,6 +14723,10 @@ Source: http://focus.ti.com/lit/ds/symlink/ua78l05.pdf</description>
 </nets>
 </sheet>
 </sheets>
+<errors>
+<approved hash="104,1,99.06,76.2,IC1,VCC,+5V,,,"/>
+<approved hash="104,1,99.06,58.42,IC1,GND,0V,,,"/>
+</errors>
 </schematic>
 </drawing>
 </eagle>
