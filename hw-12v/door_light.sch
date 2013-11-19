@@ -14361,7 +14361,7 @@ Source: http://focus.ti.com/lit/ds/symlink/ua78l05.pdf</description>
 <part name="SUPPLY14" library="supply2" deviceset="0V" device=""/>
 <part name="C1" library="rcl" deviceset="C-EU" device="C1206" value="100nF"/>
 <part name="SUPPLY19" library="supply2" deviceset="0V" device=""/>
-<part name="F1" library="rcl" deviceset="R-EU_" device="MELF0204W" value="F750mA"/>
+<part name="F1" library="rcl" deviceset="R-EU_" device="MELF0204W" value="F350mA"/>
 <part name="R5" library="rcl" deviceset="R-EU_" device="R0603" value="10kR"/>
 <part name="R7" library="rcl" deviceset="R-EU_" device="R0603" value="2.7kR"/>
 <part name="R8" library="rcl" deviceset="R-EU_" device="R0603" value="10kR"/>

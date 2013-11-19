@@ -1664,7 +1664,7 @@ design rules under a new name.</description>
 <attribute name="NAME" x="26.476" y="61.024" size="1.27" layer="25" ratio="10" rot="R90"/>
 <attribute name="VALUE" x="26.984" y="55.944" size="1.27" layer="27" ratio="10" rot="R90"/>
 </element>
-<element name="F1" library="rcl" package="MINI_MELF-0204W" value="F750mA" x="47.41" y="50.47" rot="R90"/>
+<element name="F1" library="rcl" package="MINI_MELF-0204W" value="F350mA" x="47.41" y="50.47" rot="R90"/>
 <element name="R5" library="rcl" package="R0603" value="10kR" x="28.7" y="56"/>
 <element name="R7" library="rcl" package="R0603" value="2.7kR" x="30.5" y="47"/>
 <element name="R8" library="rcl" package="R0603" value="10kR" x="26" y="56" rot="R90"/>
