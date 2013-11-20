@@ -58,7 +58,7 @@ constexpr uint8_t dimOut     =  3;      // number of seconds dim-out should last
 namespace Voltage
 {
 constexpr uint8_t    maxVccThresholdBreach =    3;  // maxumu number of times minimal Vcc threshold can be breached before going down.
-constexpr Millivolts minVcc                = 3400;  // minimum operational voltage (3.4[V]);
+constexpr Millivolts minVcc                = 3300;  // minimum operational voltage (3.4[V]);
 constexpr Millivolts irThreshold           =   30;  // voltage difference to treat as a trigger (in millivolts)
 }
 
