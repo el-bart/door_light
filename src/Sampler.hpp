@@ -25,6 +25,14 @@ public:
     samples_[idx_] = sample;
   }
 
+  T average(void) const
+  {
+    T sum{0};
+    for(auto const& e: samples_)
+      sum+=e;
+    return sum/N;
+  }
+
   T min(void) const
   {
     return find( [](T const& lhs, T const& rhs){ return lhs<rhs; } );
