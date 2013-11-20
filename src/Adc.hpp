@@ -70,10 +70,10 @@ private:
 
   Millivolts voltageOnCurrentPin(void)
   {
-    ADCSRA |= _BV(ADEN);        // enable ADC
+    ADCSRA |=  _BV(ADEN);       // enable ADC
     readAdc();                  // discard first reading
     const auto adc = readAdc(); // this one is reasonable
-    ADCSRA |= _BV(ADEN);        // disable ADC
+    ADCSRA &= ~_BV(ADEN);       // disable ADC
     return scale(adc);          // compute actual voltage, based on the measurement
   }
 
@@ -86,9 +86,8 @@ private:
     return {(high<<8u)|low};        // do explicit {} to ensure no implicit conversions
   }
 
-  Millivolts scale(uint16_t in)
+  Millivolts scale(const uint16_t in)
   {
-    in &= uint16_t{0xFFFC};                             // drop 2 least signifficant bits as a noise
     // compute actual voltage in millivolts.
     // general equation is: ADC=Vin*1024/Vref
     // this we get:         Vin=ADC*Vref/1024
