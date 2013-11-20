@@ -3,6 +3,7 @@
 
 #include "config.hpp"
 #include <avr/io.h>
+#include <inttypes.h>
 
 /** @brief basic PWM controller.
  */
@@ -40,7 +41,7 @@ public:
   void fillA(const uint8_t fill) { OCR0A = fill; }
   void fillB(const uint8_t fill) { OCR0B = fill; }
 
-  constexpr static uint16_t frequency(void) { return 600; }
+  constexpr static uint16_t frequency(void) { return 586; }
 
 private:
   void enableImpl(const bool enable, const uint8_t bits, const uint8_t set)
