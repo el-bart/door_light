@@ -42,9 +42,8 @@ constexpr auto vccIn   = _BV(PB4);  // supply voltage monitoring input
 // light-related settings
 namespace Light
 {
-constexpr uint8_t irSamples    = 10;            // number of samples to collect for thresholding
-constexpr uint8_t irMeasureSec = irSamples*1;   // number of ir measurements to do per second
-constexpr uint8_t irFill       = 255;           // fill level of the PWM for Ctrl setting; 0-255
+constexpr uint8_t irSamples  = 4;       // number of samples to collect for thresholding
+constexpr uint8_t irFill     = 50;      // fill level of the PWM for Ctrl setting; 0-255
 
 constexpr uint8_t lightFill  = 0xFF;    // PWM fill for main light DC/DC: 0-255
 
@@ -60,7 +59,7 @@ namespace Voltage
 {
 constexpr uint8_t    maxVccThresholdBreach =    3;  // maxumu number of times minimal Vcc threshold can be breached before going down.
 constexpr Millivolts minVcc                = 3400;  // minimum operational voltage (3.4[V]);
-constexpr Millivolts irThreshold           =   50;  // voltage difference to threat as a trigger (in millivolts)
+constexpr Millivolts irThreshold           =   10;  // voltage difference to threat as a trigger (in millivolts)
 }
 
 #endif

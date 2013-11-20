@@ -39,106 +39,45 @@ int main(void)
   LedCtrl         ir(pwm);
   LedLight        light(pwm);
   Adc             adc;
-  AdcSampler      sampler(0);
-  LowPowerHandler lph;
-  // enable interrupts globaly
+  AdcSampler      sampler(0);   // this will force turn-lights-on on reset
   sei();
-
-  for(int i=0; i<4*5; ++i)
-  {
-    ir.enable(false);
-    _delay_ms(100);
-    ir.enable(true);
-    _delay_ms(100);
-  }
 
   //
   // infinite system loop
   //
-  uint16_t timerCycle = 0;      // counter for timer cycles
-  uint16_t nextIrMeasure = 0;   // on which timer count do next IR measurement?
-  uint8_t  secInCycle = 0;      // number of second within the cycle
+  uint16_t pwmCycles = 0;
+  uint8_t  pwmSec    = 0;
   while(true)
   {
-    // do IR light measurement on every predefined time slot
-    if( timerCycle >= nextIrMeasure )
-    {
-      // measure and check if it has been signaled to turn on the lights
-      sampler.add( adc.irVoltage() );
-      if( distance( sampler.oldest(), sampler.newest() ) >= Voltage::irThreshold )
-        secInCycle = 1;
+    // grab ADC measurement ASAP, since PWM might have low fill
+    const auto now = adc.irVoltage();
+    // check if light has changed enough to treat it as "on"
+    if( distance( now, sampler.average() ) > Voltage::irThreshold )
+      pwmSec = 1;
 
-      // set next measurement after predefined amount of time
-      constexpr auto f = Pwm::frequency();
-      constexpr auto d = f / Light::irMeasureSec;
-      nextIrMeasure = ( nextIrMeasure + d ) % f;
-    }
-
-    // enable light with dim-in and dim-out cycles
-    if( secInCycle > 0u )
+    // light enabled?
+    if(pwmSec)
     {
-      if( secInCycle <= Light::dimIn )
+      light.enable(true);
+      if(pwmSec==2)
       {
-        // TODO
-        light.enable(true); // TODO: temporary soultion
+        pwmSec = 0;
+        light.enable(false);
       }
-      else
-        if( secInCycle <= Light::lightOn )
-        {
-          // TODO
-        }
-        else
-          if( secInCycle <= Light::dimOut )
-          {
-            // TODO
-          }
-          else
-          {
-            // TODO: turn off
-            secInCycle = 0;
-            light.enable(false);
-          }
-    } // if(in light cycle)
-
-    // mark new cycle
-    ++timerCycle;
-    // check if 1s has passed
-    if( timerCycle >= Pwm::frequency() )
-    {
-      timerCycle = 0;                       // reset counter
-      // TODO: temporary removed, not to break stuff while testing
-      //lph.handle( adc.vccVoltage() );       // check Vcc (note: may never return from here)
-      // move to next second in the light loop, if on
-      if(secInCycle)
-        ++secInCycle;
     }
-    // save power until next interrupt from the timer
+
+    //
+    // periodic stuff
+    //
+    ++pwmCycles;
+    if( pwmCycles >= Pwm::frequency() ) // second passed?
+    {
+      if(pwmSec) ++pwmSec;              // mark next cycle second, if started
+      sampler.add(now);                 // save last measurement for later
+      pwmCycles = 0;                    // reesd cycle count to count new second
+    }
+
+    // wait until next cycle.
     PowerSave::idle();
   }
-
-  /*
-  uint8_t  read[2] = { adc.irVoltage(), adc.irVoltage() };
-  uint8_t  index   = 0;
-  uint16_t onLeft  = 2*20;              // light up at start for 2[s]
-
-  // main loop
-  for(;;)
-  {
-    _delay_ms(50);
-
-    if(onLeft>0)
-      --onLeft;
-    else
-      light(false);
-
-    if( distance(read[0], read[1]) > 1 )
-    {
-      light(true);
-      onLeft = 42*20;                   // 42[s]
-    }
-
-    index       = index==0 ? 1 : 0;     // change index to oposite
-    read[index] = irLight();            // perform reading
-  }
-  */
 }
