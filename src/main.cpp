@@ -11,6 +11,7 @@
 #include "LedLight.hpp"
 #include "PowerSave.hpp"
 #include "LowPowerHandler.hpp"
+#include "DimHandler.hpp"
 
 template<typename T>
 T distance(const T a, const T b)
@@ -38,6 +39,7 @@ int main(void)
   Pwm        pwm;
   LedCtrl    ir(pwm);
   LedLight   light(pwm);
+  DimHandler dim(light);
   Adc        adc;
   AdcSampler sampler(0);   // this will force turn-lights-on on reset
   sei();
@@ -46,29 +48,23 @@ int main(void)
   // infinite system loop
   //
   uint16_t pwmCycles = 0;
-  uint8_t  pwmSec    = 0;
   while(true)
   {
     // grab ADC measurement ASAP, since PWM might have low fill
     const auto now = adc.irVoltage();
     // check if light has changed enough to treat it as "on"
     if( distance( now, sampler.average() ) > Voltage::irThreshold )
-      pwmSec = 1;
+      dim.start();
 
-    // light enabled?
-    if(pwmSec)
+    // do next dimmer tick (true means this is the last one)
+    if( dim.nextTick() )
     {
-      light.enable(true);
-      if(pwmSec==2)
+      // fill sampler with no-self-light data
+      for(decltype(sampler.size()) i=0; i<sampler.size(); ++i)
       {
-        light.enable(false);                    // turn light off
-        pwmSec = 0;                             // mars as no longer in the loop
-        for(auto i=0; i<sampler.size(); ++i)    // fill sampler with no-self-light data
-        {
-          ++pwmCycles;
-          PowerSave::idle();
-          sampler.add( adc.irVoltage() );
-        }
+        ++pwmCycles;
+        PowerSave::idle();
+        sampler.add( adc.irVoltage() );
       }
     }
 
@@ -78,7 +74,6 @@ int main(void)
     ++pwmCycles;
     if( pwmCycles >= Pwm::frequency() ) // second passed?
     {
-      if(pwmSec) ++pwmSec;              // mark next cycle second, if started
       sampler.add(now);                 // save last measurement for later
       pwmCycles = 0;                    // reesd cycle count to count new second
     }
