@@ -12,13 +12,6 @@ public:
     tooLowCount_{0}
   { }
 
-  void handle(const Millivolts vcc)
-  {
-    if( isLowPower(vcc) )
-      shutdown();
-  }
-
-private:
   bool isLowPower(const Millivolts vcc)
   {
     // if voltage below threshold?
@@ -33,13 +26,14 @@ private:
     return false;
   }
 
-  void shutdown(void)
+  void halt(void)
   {
     // we do not return from here
     while(true)
-      PowerSave::powerDown();
+      PowerSave::idle();
   }
 
+private:
   uint8_t tooLowCount_;
 };
 
