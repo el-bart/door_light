@@ -13,8 +13,15 @@ public:
   explicit Sampler(const T init):
     idx_{0}
   {
+    fill(init);
+  }
+
+  static constexpr uint8_t size(void) { return N; }
+
+  void fill(const T v)
+  {
     for(auto& e: samples_)
-      e = init;
+      e = v;
   }
 
   void add(const T sample)
