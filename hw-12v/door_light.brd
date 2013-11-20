@@ -62,8 +62,7 @@
 <wire x1="22.78" y1="69.38" x2="22.78" y2="41.75" width="0" layer="20"/>
 <text x="48.8" y="47" size="1.27" layer="1" rot="R90">+</text>
 <text x="48.7" y="65.5" size="1.27" layer="1" rot="R90">LED</text>
-<text x="25.5" y="64.6" size="1.27" layer="1">v2.0.0
-(rc8)</text>
+<text x="25.5" y="66.6" size="1.27" layer="1">v2.0.0</text>
 </plain>
 <libraries>
 <library name="atmel">
@@ -1897,10 +1896,4 @@ design rules under a new name.</description>
 </signals>
 </board>
 </drawing>
-<compatibility>
-<note version="6.3" minversion="6.2.2" severity="warning">
-Since Version 6.2.2 text objects can contain more than one line,
-which will not be processed correctly with this version.
-</note>
-</compatibility>
 </eagle>
