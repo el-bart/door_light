@@ -34,8 +34,8 @@ public:
   }
   void enableB(const bool e)
   {
-    // set OC0B on match, clear on TOP (p-mosfet).
-    enableImpl(e, _BV(COM0B1)|_BV(COM0B0), _BV(COM0B1)|_BV(COM0B0));
+    // clear OC0A on match, set on TOP (n-mosfet).
+    enableImpl(e, _BV(COM0B1)|_BV(COM0B0), _BV(COM0B1));
   }
 
   void fillA(const uint8_t fill) { OCR0A = fill; }
