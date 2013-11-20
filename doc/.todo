@@ -3,6 +3,21 @@
     <note priority="high" time="1383929676" done="1384035443">
         consider putting whole PCB on the outside and just power it up from the inside (+fuse)? power reest would indicate start light from the inside.
     </note>
+    <note priority="medium" time="1380225018" done="1384969362">
+        decrease threshold, so that detection is done on a longer distance.
+        <comment>
+            set to 30mV
+        </comment>
+    </note>
+    <note priority="medium" time="1380225018" done="1384969385">
+        fix ADC result returning - it should be 10 bit: either read ADCHL or do result&lt;&lt;2.
+    </note>
+    <note priority="medium" time="1380225018" done="1384969395">
+        fix hw to use PWM for liting up and fading out LEDs.
+    </note>
+    <note priority="medium" time="1380225018" done="1384969421">
+        move threshold to config.hpp.
+    </note>
     <note priority="medium" time="1380225102" done="1384035493">
         add internal probe, to be used by user from inside, to enable light on the outside
     </note>
@@ -12,25 +27,7 @@
     <note priority="low" time="1380225072" done="1384035498">
         add low-power led indicator
     </note>
-    <note priority="medium" time="1380225018">
-        add IR-on vs. IR-off for background light substraction.
-    </note>
-    <note priority="medium" time="1380225018">
-        decrease threshold, so that detection is done on a longer distance.
-    </note>
-    <note priority="medium" time="1380225018">
-        fix ADC result returning - it should be 10 bit: either read ADCHL or do result&lt;&lt;2.
-    </note>
-    <note priority="medium" time="1380225018">
-        fix hw to use PWM for liting up and fading out LEDs.
-    </note>
-    <note priority="medium" time="1380225018">
-        make external power via mini-USB, so that PC-communication can be made + uniwersal power charges can be used.
-    </note>
-    <note priority="medium" time="1380225018">
-        move threshold to config.hpp.
-    </note>
-    <note priority="medium" time="1384073868">
+    <note priority="medium" time="1384073868" done="1384969427">
         consider creating alternative version, power with 12V
     </note>
     <note priority="medium" time="1384933872">
