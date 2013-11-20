@@ -35,11 +35,11 @@ using AdcSampler = Sampler<Millivolts, Light::irSamples>;
 //
 int main(void)
 {
-  Pwm             pwm;
-  LedCtrl         ir(pwm);
-  LedLight        light(pwm);
-  Adc             adc;
-  AdcSampler      sampler(0);   // this will force turn-lights-on on reset
+  Pwm        pwm;
+  LedCtrl    ir(pwm);
+  LedLight   light(pwm);
+  Adc        adc;
+  AdcSampler sampler(0);   // this will force turn-lights-on on reset
   sei();
 
   //
@@ -61,8 +61,14 @@ int main(void)
       light.enable(true);
       if(pwmSec==2)
       {
-        pwmSec = 0;
-        light.enable(false);
+        light.enable(false);                    // turn light off
+        pwmSec = 0;                             // mars as no longer in the loop
+        for(auto i=0; i<sampler.size(); ++i)    // fill sampler with no-self-light data
+        {
+          ++pwmCycles;
+          PowerSave::idle();
+          sampler.add( adc.irVoltage() );
+        }
       }
     }
 

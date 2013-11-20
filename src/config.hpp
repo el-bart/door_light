@@ -59,7 +59,7 @@ namespace Voltage
 {
 constexpr uint8_t    maxVccThresholdBreach =    3;  // maxumu number of times minimal Vcc threshold can be breached before going down.
 constexpr Millivolts minVcc                = 3400;  // minimum operational voltage (3.4[V]);
-constexpr Millivolts irThreshold           =   10;  // voltage difference to threat as a trigger (in millivolts)
+constexpr Millivolts irThreshold           =  150;  // voltage difference to threat as a trigger (in millivolts)
 }
 
 #endif
