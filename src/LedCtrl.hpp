@@ -7,7 +7,7 @@
 
 /** @brief control LEDs (IR and red) controll class.
  */
-class LedCtrl: public LedBase<Pin::ctrlLed>
+class LedCtrl: private LedBase<Pin::ctrlLed>
 {
 public:
   explicit LedCtrl(Pwm& pwm):

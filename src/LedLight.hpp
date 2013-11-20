@@ -3,10 +3,11 @@
 
 #include "config.hpp"
 #include "LedBase.hpp"
+#include "Pwm.hpp"
 
 /** @brief main light source controlling facility.
  */
-class LedLight: public LedBase<Pin::light>
+class LedLight: private LedBase<Pin::light>
 {
 public:
   explicit LedLight(Pwm& pwm):
@@ -26,12 +27,10 @@ public:
   {
     pwm_.enableB(on);
     if(not on)
-      enablePin(false);
+      set(false);
   }
 
 private:
-  void enablePin(const bool on) { set(not on); }
-
   Pwm& pwm_;
 };
 
