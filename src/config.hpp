@@ -45,13 +45,13 @@ namespace Light
 constexpr uint8_t irSamples  = 4;       // number of samples to collect for thresholding
 constexpr uint8_t irFill     = 50;      // fill level of the PWM for Ctrl setting; 0-255
 
-constexpr uint8_t lightFill  = 0xFF;    // PWM fill for main light DC/DC: 0-255
+constexpr uint8_t lightFill  = 0x00;    // PWM fill for main light DC/DC: 0-255
 
 // TODO: when main light brightness can be controlled, update following 3 constants to 1, 36, 5 respectively:
-constexpr uint8_t dimIn      =  2;      // number of seconds dim-in should last
-constexpr uint8_t lightOn    =  3;      // number of seconds light should remain fully on
+constexpr uint8_t dimIn      =  1;      // number of seconds dim-in should last
+constexpr uint8_t lightOn    =  1;      // number of seconds light should remain fully on
 constexpr uint8_t dimOut     =  3;      // number of seconds dim-out should last
-constexpr uint8_t lightCycle = dimIn + lightOn + dimOut;    // total light cycle length
+//constexpr uint8_t lightCycle = dimIn + lightOn + dimOut;    // total light cycle length
 }
 
 // basic thresholds
@@ -59,7 +59,7 @@ namespace Voltage
 {
 constexpr uint8_t    maxVccThresholdBreach =    3;  // maxumu number of times minimal Vcc threshold can be breached before going down.
 constexpr Millivolts minVcc                = 3400;  // minimum operational voltage (3.4[V]);
-constexpr Millivolts irThreshold           =  150;  // voltage difference to threat as a trigger (in millivolts)
+constexpr Millivolts irThreshold           =   30;  // voltage difference to treat as a trigger (in millivolts)
 }
 
 #endif
