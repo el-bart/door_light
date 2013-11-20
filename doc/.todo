@@ -33,4 +33,7 @@
     <note priority="medium" time="1384073868">
         consider creating alternative version, power with 12V
     </note>
+    <note priority="medium" time="1384933872">
+        add resistors to mosftes' gates, limiting current to ~10-20mA (just in case, for fast switching)
+    </note>
 </todo>
