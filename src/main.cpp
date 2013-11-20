@@ -26,12 +26,12 @@ T distance(const T a, const T b)
 //
 int main(void)
 {
-  Pwm        pwm;
-  LedCtrl    ir(pwm);
-  LedLight   light(pwm);
-  DimHandler dim(light);
-  Adc        adc;
-  //AdcSampler sampler(0);   // this will force turn-lights-on on reset
+  Pwm             pwm;
+  LedCtrl         ir(pwm);
+  LedLight        light(pwm);
+  DimHandler      dim(light);
+  Adc             adc;
+  LowPowerHandler pwr;
   sei();
 
   //
@@ -56,13 +56,26 @@ int main(void)
     // periodic stuff
     //
     ++pwmCycles;
-    if( pwmCycles >= Pwm::frequency() ) // second passed?
+    if( pwmCycles >= Pwm::frequency() )         // second passed?
     {
-      prev = now;                       // save last measurement for later
-      pwmCycles = 0;                    // reesd cycle count to count new second
+      prev = now;                               // save last measurement for later
+      pwmCycles = 0;                            // reesd cycle count to count new second
+      if( pwr.isLowPower( adc.vccVoltage() ) )  // monitor Vcc levels
+        break;
     }
 
     // wait until next cycle.
     PowerSave::idle();
   }
+
+  //
+  // low power handling code
+  //
+  cli();
+  ir.enable(false);
+  light.enable(false);
+  // run infinite sleeping loop. note that power-down mode is NOT possible, since this
+  // makes main lights on all the time!
+  while(true)
+    pwr.halt();
 }
