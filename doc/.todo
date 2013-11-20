@@ -33,7 +33,10 @@
     <note priority="medium" time="1384933872">
         add resistors to mosftes' gates, limiting current to ~10-20mA (just in case, for fast switching)
     </note>
-    <note priority="medium" time="1384969558">
+    <note priority="medium" time="1384969558" done="1384971623">
         direct fluoresence light causes device to be in constant reset state
+        <comment>
+            fixed by sampling multiple values at and comparing only once new sample is ready
+        </comment>
     </note>
 </todo>

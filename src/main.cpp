@@ -40,39 +40,57 @@ int main(void)
 
 
   //
-  // infinite system loop
+  // main system loop. can be interrupted only by low power.
   //
-  uint16_t   pwmCycles = 0;
-  Millivolts prev      = 0;
+  uint16_t       pwmCycles    = 0;      // PWM generated cycles count: from 0 to Pwm::frequency()
+  Millivolts     base         = 0;      // base voltage to compare IR with. 0 ensures first check will lit up main lights, as expected
+  Millivolts     lastAvg      = 0;      // last computed average voltage value
+  uint32_t       sum          = 0;      // current sum of the obtained values
+  constexpr auto samplesCount = Pwm::frequency() / Light::irSamples;    // number of samples to average
+  uint8_t        sampleNum    = 0;      // currently collected samples count
   while(true)
   {
-    // grab ADC measurement ASAP, since PWM might have low fill
-    const auto now = adc.irVoltage();
-    // check if light has changed enough to treat it as "on"
-    if( distance( now, prev ) > Voltage::irThreshold )
+    //
+    // collect averaged data
+    //
+    sum += adc.irVoltage();             // grab ADC measurement ASAP, since PWM might have low fill
+    ++sampleNum;                        // mark new sample
+    if( sampleNum >= samplesCount )
     {
-      prev = now;
-      dim.start();
+      // save the actuall result and reset temporary variables
+      lastAvg   = sum / sampleNum;
+      sum       = 0;
+      sampleNum = 0;
+      // check if light has changed enough to treat it as "on"
+      if( distance(lastAvg, base) > Voltage::irThreshold )
+      {
+        base = lastAvg;                 // save to prevent re-reseting this value
+        dim.start();                    // start light cycle
+      }
     }
+
+    //
     // process dimming, if required
+    //
     dim.nextTick();
 
     //
     // periodic stuff
     //
-    ++pwmCycles;
+    ++pwmCycles;                                // mark next cycle has passed
     if( pwmCycles >= Pwm::frequency() )         // second passed?
     {
-      prev      = now;                          // save last measurement for later
+      base      = lastAvg;                      // save last measuement for later every once a while
       pwmCycles = 0;                            // reesd cycle count to count new second
       if( pwr.isLowPower( adc.vccVoltage() ) )  // monitor Vcc levels
         break;
     }
 
-    // confirm we're alive :)
-    wdg.reset();
-    // wait until next cycle.
-    PowerSave::idle();
+    //
+    // housekeeping and syncing loop with timer
+    //
+    wdg.reset();                        // confirm we're alive :)
+    PowerSave::idle();                  // wait until next cycle.
   } // main processing loop
 
 
