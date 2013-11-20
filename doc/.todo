@@ -27,16 +27,19 @@
     <note priority="medium" time="1384073868" done="1384969427">
         consider creating alternative version, power with 12V
     </note>
+    <note priority="medium" time="1384969558" done="1384971623">
+        direct fluoresence light causes device to be in constant reset state
+        <comment>
+            fixed by sampling multiple values at and comparing only once new sample is ready
+        </comment>
+    </note>
     <note priority="low" time="1380225072" done="1384035498">
         add low-power led indicator
     </note>
     <note priority="medium" time="1384933872">
         add resistors to mosftes' gates, limiting current to ~10-20mA (just in case, for fast switching)
     </note>
-    <note priority="medium" time="1384969558" done="1384971623">
-        direct fluoresence light causes device to be in constant reset state
-        <comment>
-            fixed by sampling multiple values at and comparing only once new sample is ready
-        </comment>
+    <note priority="low" time="1384980320">
+        add 'grace period', when light is turned on, not to reset counter for a 2-3[s]; this will eliminate flickering when turning it on with hand close
     </note>
 </todo>
