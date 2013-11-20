@@ -8,6 +8,7 @@
 #include "Pwm.hpp"
 #include "LedCtrl.hpp"
 #include "LedLight.hpp"
+#include "Watchdog.hpp"
 #include "PowerSave.hpp"
 #include "DimHandler.hpp"
 #include "LowPowerHandler.hpp"
@@ -26,12 +27,15 @@ T distance(const T a, const T b)
 //
 int main(void)
 {
+  Watchdog        wdg;
+  LowPowerHandler pwr;
   Pwm             pwm;
   LedCtrl         ir(pwm);
   LedLight        light(pwm);
   DimHandler      dim(light);
   Adc             adc;
-  LowPowerHandler pwr;
+
+  wdg.reset();
   sei();
 
 
@@ -65,6 +69,8 @@ int main(void)
         break;
     }
 
+    // confirm we're alive :)
+    wdg.reset();
     // wait until next cycle.
     PowerSave::idle();
   } // main processing loop
@@ -74,6 +80,7 @@ int main(void)
   // low power handling code - one way trip...
   //
   cli();
+  wdg.disable();
   ir.enable(false);
   light.enable(false);
   // run infinite sleeping loop. note that power-down mode is NOT possible, since this

@@ -10,11 +10,11 @@ class Watchdog
 {
 public:
   /** \brief initialies watchdog timer.
-   *  \note watchdog starts in disabled mode.
+   *  \note watchdog starts in ENABLED mode.
    */
   Watchdog(void)
   {
-    disable();
+    enable();
   }
 
   void enable(void)
