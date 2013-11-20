@@ -9,8 +9,8 @@
 #include "LedCtrl.hpp"
 #include "LedLight.hpp"
 #include "PowerSave.hpp"
-#include "LowPowerHandler.hpp"
 #include "DimHandler.hpp"
+#include "LowPowerHandler.hpp"
 
 template<typename T>
 T distance(const T a, const T b)
@@ -33,6 +33,7 @@ int main(void)
   Adc             adc;
   LowPowerHandler pwr;
   sei();
+
 
   //
   // infinite system loop
@@ -58,7 +59,7 @@ int main(void)
     ++pwmCycles;
     if( pwmCycles >= Pwm::frequency() )         // second passed?
     {
-      prev = now;                               // save last measurement for later
+      prev      = now;                          // save last measurement for later
       pwmCycles = 0;                            // reesd cycle count to count new second
       if( pwr.isLowPower( adc.vccVoltage() ) )  // monitor Vcc levels
         break;
@@ -66,10 +67,11 @@ int main(void)
 
     // wait until next cycle.
     PowerSave::idle();
-  }
+  } // main processing loop
+
 
   //
-  // low power handling code
+  // low power handling code - one way trip...
   //
   cli();
   ir.enable(false);

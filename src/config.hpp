@@ -47,11 +47,9 @@ constexpr uint8_t irFill     = 50;      // fill level of the PWM for Ctrl settin
 
 constexpr uint8_t lightFill  = 0x00;    // PWM fill for main light DC/DC: 0-255
 
-// TODO: when main light brightness can be controlled, update following 3 constants to 1, 36, 5 respectively:
 constexpr uint8_t dimIn      =  1;      // number of seconds dim-in should last
-constexpr uint8_t lightOn    =  1;      // number of seconds light should remain fully on
-constexpr uint8_t dimOut     =  3;      // number of seconds dim-out should last
-//constexpr uint8_t lightCycle = dimIn + lightOn + dimOut;    // total light cycle length
+constexpr uint8_t lightOn    = 35;      // number of seconds light should remain fully on
+constexpr uint8_t dimOut     =  6;      // number of seconds dim-out should last
 }
 
 // basic thresholds
