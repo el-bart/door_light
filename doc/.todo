@@ -24,13 +24,16 @@
     <note priority="medium" time="1380225127" done="1384035483">
         add external probe on the cable, so that only probe can be moved on the other side of the doors
     </note>
-    <note priority="low" time="1380225072" done="1384035498">
-        add low-power led indicator
-    </note>
     <note priority="medium" time="1384073868" done="1384969427">
         consider creating alternative version, power with 12V
     </note>
+    <note priority="low" time="1380225072" done="1384035498">
+        add low-power led indicator
+    </note>
     <note priority="medium" time="1384933872">
         add resistors to mosftes' gates, limiting current to ~10-20mA (just in case, for fast switching)
+    </note>
+    <note priority="medium" time="1384969558">
+        direct fluoresence light causes device to be in constant reset state
     </note>
 </todo>
