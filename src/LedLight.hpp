@@ -7,7 +7,7 @@
 
 /** @brief main light source controlling facility.
  */
-class LedLight: private LedBase<Pin::light>
+class LedLight
 {
 public:
   explicit LedLight(Pwm& pwm):
@@ -25,13 +25,16 @@ public:
 
   void enable(const bool on)
   {
+    pinDcDc_.set(on);
     pwm_.enableB(on);
     if(not on)
-      set(false);
+      pinLight_.set(false);
   }
 
 private:
-  Pwm& pwm_;
+  LedBase<Pin::light> pinLight_;
+  LedBase<Pin::dcDc>  pinDcDc_;
+  Pwm&                pwm_;
 };
 
 #endif

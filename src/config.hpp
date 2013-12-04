@@ -35,6 +35,7 @@ namespace Pin
 {
 constexpr auto ctrlLed = _BV(PB0);  // control and IR LEDs
 constexpr auto light   = _BV(PB1);  // main light
+constexpr auto dcDc    = _BV(PB2);  // main light power supply (DC/DC)
 constexpr auto irIn    = _BV(PB3);  // IR phototransistor voltage monitoring input
 constexpr auto vccIn   = _BV(PB4);  // supply voltage monitoring input
 }

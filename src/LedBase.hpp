@@ -9,7 +9,7 @@
 template<uint8_t P>
 class LedBase
 {
-protected:
+public:
   LedBase(void)
   {
     DDRB |= P;  // set this pin as output

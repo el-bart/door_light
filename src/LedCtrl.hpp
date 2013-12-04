@@ -7,7 +7,7 @@
 
 /** @brief control LEDs (IR and red) controll class.
  */
-class LedCtrl: private LedBase<Pin::ctrlLed>
+class LedCtrl
 {
 public:
   explicit LedCtrl(Pwm& pwm):
@@ -27,11 +27,12 @@ public:
   {
     pwm_.enableA(on);
     if(not on)
-      set(false);
+      pinLed_.set(false);
   }
 
 private:
-  Pwm& pwm_;
+  LedBase<Pin::ctrlLed> pinLed_;
+  Pwm&                  pwm_;
 };
 
 #endif
