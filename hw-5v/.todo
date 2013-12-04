@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
 <todo version="0.1.20">
-    <note priority="veryhigh" time="1384789162">
-        add diode to prevent uC's Vcc being influenced by supply voltage change when DC/DC is on
-    </note>
-    <note priority="high" time="1384789130">
+    <note priority="high" time="1384789130" done="1386188051">
         add 4.7uF to decouple uC - it resets when lights are turning on
     </note>
-    <note priority="medium" time="1384789099">
+    <note priority="medium" time="1384789099" done="1386188150">
         add 100uF next to C1 as it heats up during work
     </note>
-    <note priority="medium" time="1384790321">
+    <note priority="medium" time="1384790321" done="1386188890">
         add transistor for controling PWM of DC/DC output (light LEDs)
     </note>
-    <note priority="medium" time="1384790368">
+    <note priority="medium" time="1384790368" done="1386188897">
         switch PWM to control DC/DC output power, rather than its on/off
+    </note>
+    <note priority="veryhigh" time="1384789162" done="1386189264">
+        add diode to prevent uC's Vcc being influenced by supply voltage change when DC/DC is on
     </note>
 </todo>
