@@ -16208,7 +16208,7 @@ Source: http://www.infineon.com/upload/Document/BSP170P_Rev2.4.pdf</description>
 <part name="SUPPLY19" library="supply2" deviceset="0V" device=""/>
 <part name="U1" library="Texas Instruments_By_element14_Batch_1" deviceset="MC33063ADE4" device=""/>
 <part name="SUPPLY26" library="supply2" deviceset="+4.1V" device="" value="Vbatt"/>
-<part name="F1" library="rcl" deviceset="R-EU_" device="MELF0204W" value="F750mA"/>
+<part name="F1" library="rcl" deviceset="R-EU_" device="MELF0207W" value="F750mA"/>
 <part name="R7" library="rcl" deviceset="R-EU_" device="R0402" value="10kR"/>
 <part name="D1" library="diode" deviceset="MBRS130LT3" device="" value=" MBRS140T3G"/>
 <part name="C3" library="rcl" deviceset="C-EU" device="C1206" value="1.5nF"/>
@@ -16580,7 +16580,6 @@ Source: http://www.infineon.com/upload/Document/BSP170P_Rev2.4.pdf</description>
 <segment>
 <pinref part="U1" gate="A" pin="SWITCH_C"/>
 <wire x1="40.64" y1="134.62" x2="60.96" y2="134.62" width="0.1524" layer="91"/>
-<wire x1="60.96" y1="134.62" x2="60.96" y2="132.08" width="0.1524" layer="91"/>
 <pinref part="D1" gate="G$1" pin="A"/>
 <pinref part="L1" gate="G$1" pin="2"/>
 <wire x1="60.96" y1="132.08" x2="60.96" y2="134.62" width="0.1524" layer="91"/>
@@ -16707,6 +16706,7 @@ Source: http://www.infineon.com/upload/Document/BSP170P_Rev2.4.pdf</description>
 <pinref part="IC1" gate="G$1" pin="PB1/PCINT1/AIN1/OC0B/INT0/MISO"/>
 <wire x1="99.06" y1="71.12" x2="86.36" y2="71.12" width="0.1524" layer="91"/>
 <wire x1="86.36" y1="71.12" x2="86.36" y2="66.04" width="0.1524" layer="91"/>
+<junction x="7.62" y="35.56"/>
 </segment>
 </net>
 <net name="N$21" class="0">
@@ -16726,6 +16726,12 @@ Source: http://www.infineon.com/upload/Document/BSP170P_Rev2.4.pdf</description>
 </nets>
 </sheet>
 </sheets>
+<errors>
+<approved hash="104,1,99.06,76.2,IC1,VCC,+4.1V,,,"/>
+<approved hash="104,1,99.06,58.42,IC1,GND,0V,,,"/>
+<approved hash="104,1,-5.08,139.7,U1,VCC,N$3,,,"/>
+<approved hash="108,1,60.96,132.08,N$11,,,,,"/>
+</errors>
 </schematic>
 </drawing>
 </eagle>
