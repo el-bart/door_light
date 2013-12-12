@@ -43,7 +43,8 @@ constexpr auto vccIn   = _BV(PB4);  // supply voltage monitoring input
 // light-related settings
 namespace Light
 {
-constexpr uint8_t irSamples  = 18;      // number of samples to collect per second (each sample is an average of measurements in a corresponding period)
+constexpr uint8_t irSamples  = 18;      // number of samples to collect per second (each sample is an average of measurements in a corresponding period).
+                                        // keep this value, so that PWM's frequency divided by this gives a power of 2 - otherwise code will become big...
 constexpr uint8_t irFill     = 50;      // fill level of the PWM for Ctrl setting; 0-255
 
 constexpr uint8_t lightFill  = 0x00;    // PWM fill for main light DC/DC: 0-255
