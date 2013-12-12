@@ -56,7 +56,7 @@ int main(void)
     //
     sum += adc.irVoltage();             // grab ADC measurement ASAP, since PWM might have low fill
     ++sampleNum;                        // mark new sample
-    if( sampleNum >= samplesCount )
+    if( sampleNum == samplesCount )
     {
       // save the actuall result and reset temporary variables
       lastAvg   = sum / sampleNum;
@@ -65,7 +65,6 @@ int main(void)
       // check if light has changed enough to treat it as "on"
       if( graceTimeout==0 && distance(lastAvg, base) > Voltage::irThreshold )
       {
-        base         = lastAvg;                             // save to prevent re-reseting this value
         graceTimeout = Light::graceOn * Pwm::frequency();   // set proper grace time for not re-activating trigger
         dim.start();                                        // start light cycle
       }
@@ -80,7 +79,7 @@ int main(void)
     // periodic stuff
     //
     ++pwmCycles;                                // mark next cycle has passed
-    if( pwmCycles >= Pwm::frequency() )         // second passed?
+    if( pwmCycles == Pwm::frequency() )         // 1[s] passed?
     {
       base      = lastAvg;                      // save last measuement for later every once a while
       pwmCycles = 0;                            // reset cycle count to count new second
