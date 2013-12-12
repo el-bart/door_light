@@ -25,10 +25,10 @@ public:
 
   void enable(const bool on)
   {
-    pinDcDc_.set(on);
+    pinDcDc_.set(not on);   // P-MOSFET requrest inverted logic
     pwm_.enableB(on);
     if(not on)
-      pinLight_.set(false);
+      pinLight_.set(false); // make sure pin is down, when PWM has been disabled
   }
 
 private:
