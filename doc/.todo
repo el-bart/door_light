@@ -36,6 +36,9 @@
     <note priority="low" time="1380225072" done="1384035498">
         add low-power led indicator
     </note>
+    <note priority="veryhigh" time="1386866426">
+        add 10kR to +5V on BSP250's gate
+    </note>
     <note priority="medium" time="1384933872">
         add resistors to mosftes' gates, limiting current to ~10-20mA (just in case, for fast switching)
     </note>
