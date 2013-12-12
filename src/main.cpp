@@ -43,6 +43,7 @@ int main(void)
   // main system loop. can be interrupted only by low power.
   //
   uint16_t       pwmCycles    = 0;      // PWM generated cycles count: from 0 to Pwm::frequency()
+  uint16_t       graceTimeout = 0;      // number of PWM cycles to wait before re-activating IR triggering
   Millivolts     base         = 0;      // base voltage to compare IR with. 0 ensures first check will lit up main lights, as expected
   Millivolts     lastAvg      = 0;      // last computed average voltage value
   uint32_t       sum          = 0;      // current sum of the obtained values
@@ -62,10 +63,11 @@ int main(void)
       sum       = 0;
       sampleNum = 0;
       // check if light has changed enough to treat it as "on"
-      if( distance(lastAvg, base) > Voltage::irThreshold )
+      if( graceTimeout==0 && distance(lastAvg, base) > Voltage::irThreshold )
       {
-        base = lastAvg;                 // save to prevent re-reseting this value
-        dim.start();                    // start light cycle
+        base         = lastAvg;                             // save to prevent re-reseting this value
+        graceTimeout = Light::graceOn * Pwm::frequency();   // set proper grace time for not re-activating trigger
+        dim.start();                                        // start light cycle
       }
     }
 
@@ -85,6 +87,7 @@ int main(void)
       if( pwr.isLowPower( adc.vccVoltage() ) )  // monitor Vcc levels
         break;
     }
+    if(graceTimeout) --graceTimeout;            // if still in grace timeout period, substract one cycle
 
     //
     // housekeeping and syncing loop with timer
