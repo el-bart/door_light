@@ -36,16 +36,19 @@
     <note priority="low" time="1380225072" done="1384035498">
         add low-power led indicator
     </note>
-    <note priority="veryhigh" time="1386866426">
-        add 10kR to +5V on BSP250's gate
-    </note>
-    <note priority="medium" time="1384933872">
-        add resistors to mosftes' gates, limiting current to ~10-20mA (just in case, for fast switching)
-    </note>
     <note priority="low" time="1384980320" done="1386869231">
         add 'grace period', when light is turned on, not to reset counter for a 2-3[s]; this will eliminate flickering when turning it on with hand close
         <comment>
             added to source
         </comment>
+    </note>
+    <note priority="veryhigh" time="1386866426">
+        add 10kR to +5V on BSP250's gate
+    </note>
+    <note priority="veryhigh" time="1386875662">
+        add -3V zenner diode and split 10kR to 2x5.1kR in IRvoltage reading circut. if not DC/DC work affect power supply too much...
+    </note>
+    <note priority="medium" time="1384933872">
+        add resistors to mosftes' gates, limiting current to ~10-20mA (just in case, for fast switching)
     </note>
 </todo>
