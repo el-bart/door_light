@@ -16209,7 +16209,7 @@ Source: http://www.infineon.com/upload/Document/BSP170P_Rev2.4.pdf</description>
 <part name="U1" library="Texas Instruments_By_element14_Batch_1" deviceset="MC33063ADE4" device=""/>
 <part name="SUPPLY26" library="supply2" deviceset="+4.1V" device="" value="Vbatt"/>
 <part name="F1" library="rcl" deviceset="R-EU_" device="MELF0207W" value="F750mA"/>
-<part name="R7" library="rcl" deviceset="R-EU_" device="R0402" value="10kR"/>
+<part name="R7" library="rcl" deviceset="R-EU_" device="R0603" value="10kR"/>
 <part name="D1" library="diode" deviceset="MBRS130LT3" device="" value=" MBRS140T3G"/>
 <part name="C3" library="rcl" deviceset="C-EU" device="C1206" value="1.5nF"/>
 <part name="SUPPLY4" library="supply2" deviceset="0V" device=""/>
