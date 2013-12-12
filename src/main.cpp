@@ -81,7 +81,7 @@ int main(void)
     if( pwmCycles >= Pwm::frequency() )         // second passed?
     {
       base      = lastAvg;                      // save last measuement for later every once a while
-      pwmCycles = 0;                            // reesd cycle count to count new second
+      pwmCycles = 0;                            // reset cycle count to count new second
       if( pwr.isLowPower( adc.vccVoltage() ) )  // monitor Vcc levels
         break;
     }
