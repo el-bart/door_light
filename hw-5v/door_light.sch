@@ -16247,9 +16247,8 @@ Source: http://www.infineon.com/upload/Document/BSP170P_Rev2.4.pdf</description>
 <part name="T1" library="zetex" deviceset="NMOSSOT23" device="" value="IRFML8244"/>
 <part name="SJ1" library="jumper" deviceset="SJ" device="W" value="PWR"/>
 <part name="SJ2" library="jumper" deviceset="SJ" device="W" value="LIGHT"/>
-<part name="R12" library="rcl" deviceset="R-EU_" device="R0603" value="100kR"/>
+<part name="R12" library="rcl" deviceset="R-EU_" device="R0603" value="10kR"/>
 <part name="R13" library="rcl" deviceset="R-EU_" device="R0603" value="100kR"/>
-<part name="SUPPLY15" library="supply2" deviceset="0V" device=""/>
 <part name="SUPPLY16" library="supply2" deviceset="0V" device=""/>
 <part name="D2" library="diode" deviceset="MBRS130LT3" device="" value=" MBRS140T3G"/>
 <part name="D3" library="diode" deviceset="MBRS130LT3" device="" value=" MBRS140T3G"/>
@@ -16261,6 +16260,7 @@ Source: http://www.infineon.com/upload/Document/BSP170P_Rev2.4.pdf</description>
 <part name="T3" library="zetex" deviceset="NMOSSOT23" device="" value="IRFML8244"/>
 <part name="R14" library="rcl" deviceset="R-EU_" device="R0603" value="100kR"/>
 <part name="SUPPLY31" library="supply2" deviceset="0V" device=""/>
+<part name="SUPPLY7" library="supply2" deviceset="+4.1V" device="" value="Vbatt"/>
 </parts>
 <sheets>
 <sheet>
@@ -16319,9 +16319,8 @@ Source: http://www.infineon.com/upload/Document/BSP170P_Rev2.4.pdf</description>
 <instance part="T1" gate="A" x="30.48" y="15.24" rot="MR0"/>
 <instance part="SJ1" gate="1" x="-53.34" y="35.56" rot="R90"/>
 <instance part="SJ2" gate="1" x="-10.16" y="35.56" rot="R90"/>
-<instance part="R12" gate="G$1" x="48.26" y="58.42" rot="R90"/>
+<instance part="R12" gate="G$1" x="-2.54" y="68.58" rot="R270"/>
 <instance part="R13" gate="G$1" x="48.26" y="33.02" rot="R90"/>
-<instance part="SUPPLY15" gate="0V" x="48.26" y="48.26"/>
 <instance part="SUPPLY16" gate="0V" x="48.26" y="22.86"/>
 <instance part="D2" gate="G$1" x="-53.34" y="152.4"/>
 <instance part="D3" gate="G$1" x="-30.48" y="40.64"/>
@@ -16333,6 +16332,7 @@ Source: http://www.infineon.com/upload/Document/BSP170P_Rev2.4.pdf</description>
 <instance part="T3" gate="A" x="-10.16" y="20.32" rot="MR0"/>
 <instance part="R14" gate="G$1" x="7.62" y="30.48" rot="R90"/>
 <instance part="SUPPLY31" gate="0V" x="7.62" y="10.16"/>
+<instance part="SUPPLY7" gate="P" x="-2.54" y="78.74"/>
 </instances>
 <busses>
 </busses>
@@ -16407,11 +16407,6 @@ Source: http://www.infineon.com/upload/Document/BSP170P_Rev2.4.pdf</description>
 <pinref part="SJ1" gate="1" pin="1"/>
 <pinref part="SUPPLY14" gate="0V" pin="0V"/>
 <wire x1="-25.4" y1="30.48" x2="-53.34" y2="30.48" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="R12" gate="G$1" pin="1"/>
-<pinref part="SUPPLY15" gate="0V" pin="0V"/>
-<wire x1="48.26" y1="50.8" x2="48.26" y2="53.34" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="R13" gate="G$1" pin="1"/>
@@ -16490,12 +16485,12 @@ Source: http://www.infineon.com/upload/Document/BSP170P_Rev2.4.pdf</description>
 <segment>
 <wire x1="-40.64" y1="147.32" x2="-53.34" y2="147.32" width="0.1524" layer="91"/>
 <wire x1="-53.34" y1="147.32" x2="-53.34" y2="63.5" width="0.1524" layer="91"/>
-<wire x1="-53.34" y1="63.5" x2="48.26" y2="63.5" width="0.1524" layer="91"/>
-<wire x1="48.26" y1="63.5" x2="88.9" y2="63.5" width="0.1524" layer="91"/>
+<wire x1="-53.34" y1="63.5" x2="-2.54" y2="63.5" width="0.1524" layer="91"/>
+<wire x1="-2.54" y1="63.5" x2="88.9" y2="63.5" width="0.1524" layer="91"/>
 <wire x1="88.9" y1="63.5" x2="88.9" y2="68.58" width="0.1524" layer="91"/>
 <pinref part="Q1" gate="G$1" pin="G"/>
 <pinref part="R12" gate="G$1" pin="2"/>
-<junction x="48.26" y="63.5"/>
+<junction x="-2.54" y="63.5"/>
 <pinref part="IC1" gate="G$1" pin="PB2/PCINT2/SCK/ADC1/T0"/>
 <wire x1="99.06" y1="68.58" x2="88.9" y2="68.58" width="0.1524" layer="91"/>
 </segment>
@@ -16559,6 +16554,11 @@ Source: http://www.infineon.com/upload/Document/BSP170P_Rev2.4.pdf</description>
 <pinref part="C6" gate="G$1" pin="+"/>
 <pinref part="SUPPLY17" gate="P" pin="+4.1V"/>
 <wire x1="30.48" y1="96.52" x2="30.48" y2="88.9" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="R12" gate="G$1" pin="1"/>
+<pinref part="SUPPLY7" gate="P" pin="+4.1V"/>
+<wire x1="-2.54" y1="76.2" x2="-2.54" y2="73.66" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$8" class="0">

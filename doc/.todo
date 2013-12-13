@@ -27,6 +27,12 @@
     <note priority="medium" time="1384073868" done="1384969427">
         consider creating alternative version, power with 12V
     </note>
+    <note priority="medium" time="1384933872" done="1386922576">
+        add resistors to mosftes' gates, limiting current to ~10-20mA (just in case, for fast switching)
+        <comment>
+            not needed for this application - to low frequency to bother
+        </comment>
+    </note>
     <note priority="medium" time="1384969558" done="1384971623">
         direct fluoresence light causes device to be in constant reset state
         <comment>
@@ -42,16 +48,13 @@
             added to source
         </comment>
     </note>
-    <note priority="veryhigh" time="1386866426">
+    <note priority="veryhigh" time="1386866426" done="1386922845">
         add 10kR to +5V on BSP250's gate
+        <comment>
+            fixed
+        </comment>
     </note>
     <note priority="veryhigh" time="1386875662">
         add -3V zenner diode and split 10kR to 2x5.1kR in IRvoltage reading circut. if not DC/DC work affect power supply too much...
-    </note>
-    <note priority="medium" time="1384933872" done="1386922576">
-        add resistors to mosftes' gates, limiting current to ~10-20mA (just in case, for fast switching)
-        <comment>
-            not needed for this application - to low frequency to bother
-        </comment>
     </note>
 </todo>
