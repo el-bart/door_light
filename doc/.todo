@@ -48,7 +48,10 @@
     <note priority="veryhigh" time="1386875662">
         add -3V zenner diode and split 10kR to 2x5.1kR in IRvoltage reading circut. if not DC/DC work affect power supply too much...
     </note>
-    <note priority="medium" time="1384933872">
+    <note priority="medium" time="1384933872" done="1386922576">
         add resistors to mosftes' gates, limiting current to ~10-20mA (just in case, for fast switching)
+        <comment>
+            not needed for this application - to low frequency to bother
+        </comment>
     </note>
 </todo>
