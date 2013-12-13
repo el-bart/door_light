@@ -1,5 +1,11 @@
 <?xml version="1.0"?>
 <todo version="0.1.20">
+    <note priority="veryhigh" time="1386866426" done="1386922845">
+        add 10kR to +5V on BSP250's gate
+        <comment>
+            fixed
+        </comment>
+    </note>
     <note priority="high" time="1383929676" done="1384035443">
         consider putting whole PCB on the outside and just power it up from the inside (+fuse)? power reest would indicate start light from the inside.
     </note>
@@ -48,13 +54,10 @@
             added to source
         </comment>
     </note>
-    <note priority="veryhigh" time="1386866426" done="1386922845">
-        add 10kR to +5V on BSP250's gate
-        <comment>
-            fixed
-        </comment>
-    </note>
-    <note priority="veryhigh" time="1386875662">
+    <note priority="veryhigh" time="1386875662" done="1386925344">
         add -3V zenner diode and split 10kR to 2x5.1kR in IRvoltage reading circut. if not DC/DC work affect power supply too much...
+        <comment>
+            added
+        </comment>
     </note>
 </todo>
